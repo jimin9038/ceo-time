@@ -1,0 +1,12 @@
+
+vscode:
+  extensions:
+    - eamodio.gitlens
+    - steoates.autoimport
+    - dbaeumer.vscode-eslint
+    - mhutchie.git-graph
+    - phil294.git-log--graph
+    - christian-kohler.path-intellisense
+    - esbenp.prettier-vscode
+    - Vue.volar
+    - bradlc.vscode-tailwindcss
