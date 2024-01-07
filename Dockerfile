@@ -1,23 +1,24 @@
-FROM node:20 AS builder
+FROM node:20-slim AS base
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
 
+FROM base AS builder
 WORKDIR /app
-
 COPY . .
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+RUN pnpm run -r build
+RUN pnpm deploy --filter=backend --prod /prod/backend
+RUN pnpm deploy --filter=frontend --prod /prod/frontend
 
-RUN npm i -g pnpm
+FROM base AS backend
+COPY --from=builder /prod/backend /prod/backend 
+WORKDIR /prod/backend
+EXPOSE 8000
+CMD ["pnpm", "start"]
 
-RUN pnpm install
-
-RUN pnpm --filter backend build
-
-FROM node:20-alpine AS production
-
-WORKDIR /app
-
-COPY . .
-
-RUN npm i -g pnpm
-
-ENV NODE_ENV production
-
-COPY --from=builder /app ./
+FROM base as frontend
+COPY --from=builder /prod/frontend /prod/frontend
+WORKDIR /prod/frontend
+EXPOSE 8001
+CMD ["pnpm", "start"]
