@@ -1,0 +1,13 @@
+services:
+  api:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      target: builder
+    volumes:
+      - .:/app
+    env_file:
+      - ./backend/.env
+    command: pnpm run --filter=backend start:dev
+    ports:
+      - 3000:3000
