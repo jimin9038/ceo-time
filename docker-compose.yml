@@ -1,5 +1,6 @@
 services:
   api:
+    container_name: ceotime-api
     build:
       dockerfile: Dockerfile
       context: .
@@ -11,3 +12,17 @@ services:
     command: pnpm run --filter=backend start:dev
     ports:
       - 3000:3000
+  database:
+    container_name: ceotime-database
+    image: postgres:16-alpine
+    ports:
+      - 5525:5526
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: ceotime
+    volumes:
+      - ceotime-database:/var/lib/postgresql/data
+
+volumes:
+  ceotime-database:
