@@ -1,4 +1,6 @@
-
+ports:
+  - port: 5433 # PostgreSQL
+    onOpen: ignore
 vscode:
   extensions:
     - eamodio.gitlens
@@ -10,3 +12,4 @@ vscode:
     - esbenp.prettier-vscode
     - Vue.volar
     - bradlc.vscode-tailwindcss
+    - Prisma.prisma
