@@ -2,7 +2,7 @@ set -ex
 
 npm install -g pnpm@latest
 pnpm install
-
+pnpm install -g prisma 
 for i in {1..5}
 do
   pnpm --filter backend exec prisma migrate dev && break
