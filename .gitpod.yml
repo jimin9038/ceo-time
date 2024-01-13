@@ -1,6 +1,11 @@
 ports:
   - port: 5433 # PostgreSQL
     onOpen: ignore
+
+tasks:
+  - name: Setup
+    before: docker compose up -d
+    init: setup.sh
 vscode:
   extensions:
     - eamodio.gitlens

@@ -7,6 +7,11 @@ FROM base AS builder
 WORKDIR /app
 COPY . .
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+
+WORKDIR /app/backend
+RUN pnpx prisma generate
+
+WORKDIR /app
 RUN pnpm run -r build
 RUN pnpm deploy --filter=backend --prod /prod/backend
 RUN pnpm deploy --filter=frontend --prod /prod/frontend
