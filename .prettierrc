@@ -1,0 +1,24 @@
+{
+  "singleQuote": true,
+  "trailingComma": "none",
+  "semi": false,
+  "plugins": [
+    "@trivago/prettier-plugin-sort-imports",
+    "prettier-plugin-tailwindcss"
+  ],
+  "importOrderParserPlugins": [
+    "typescript",
+    "jsx",
+    "classProperties",
+    "decorators-legacy"
+  ],
+  "importOrder": [
+    "^@nestjs(.*)$",
+    "^@generated$",
+    "<THIRD_PARTY_MODULES>",
+    "^@libs/(.*)$",
+    "^@admin/(.*)$",
+    "^@client/(.*)$",
+    "^[./]"
+  ]
+}
