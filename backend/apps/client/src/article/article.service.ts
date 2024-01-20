@@ -1,56 +1,47 @@
 import { Injectable } from '@nestjs/common'
 import { PrismaService } from '@libs/prisma'
-import { Article, Prisma } from '@prisma/client'
+import { Prisma } from '@prisma/client'
 
 @Injectable()
 export class ArticleService {
   constructor(private prisma: PrismaService) {}
 
-  async article(
-    articleWhereUniqueInput: Prisma.ArticleWhereUniqueInput
-  ): Promise<Article | null> {
-    return this.prisma.article.findUnique({
-      where: articleWhereUniqueInput
+  async getArticleByID(id: number) {
+    return await this.prisma.article.findUniqueOrThrow({
+      where: {
+        id,
+        published: true
+      }
     })
   }
 
-  async articles(params: {
-    skip?: number
-    take?: number
-    cursor?: Prisma.ArticleWhereUniqueInput
-    where?: Prisma.ArticleWhereInput
+  async getArticles(params: {
+    take: number
+    cursor: number | null
     orderBy?: Prisma.ArticleOrderByWithRelationInput
-  }): Promise<Article[]> {
-    const { skip, take, cursor, where, orderBy } = params
-    return this.prisma.article.findMany({
-      skip,
+    category: Array<number>
+    published: boolean
+  }) {
+    const { take, cursor, orderBy, category, published } = params
+    const articles = await this.prisma.article.findMany({
+      skip: 1,
       take,
-      cursor,
-      where,
-      orderBy
+      cursor: cursor
+        ? {
+            id: cursor
+          }
+        : null,
+      orderBy,
+      where: {
+        published: published,
+        ArticleCategory: {
+          every: {
+            categoryId: { in: category }
+          }
+        }
+      }
     })
-  }
 
-  async createArticle(data: Prisma.ArticleCreateInput): Promise<Article> {
-    return this.prisma.article.create({
-      data
-    })
-  }
-
-  async updateArticle(params: {
-    where: Prisma.ArticleWhereUniqueInput
-    data: Prisma.ArticleUpdateInput
-  }): Promise<Article> {
-    const { data, where } = params
-    return this.prisma.article.update({
-      data,
-      where
-    })
-  }
-
-  async deleteArticle(where: Prisma.ArticleWhereUniqueInput): Promise<Article> {
-    return this.prisma.article.delete({
-      where
-    })
+    return articles
   }
 }
