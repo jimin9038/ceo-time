@@ -29,8 +29,4 @@ export class AuthenticatedUser {
   isAdmin(): boolean {
     return this.#role === Role.Admin
   }
-
-  isSuperAdmin(): boolean {
-    return this.#role === Role.SuperAdmin
-  }
 }
