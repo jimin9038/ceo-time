@@ -10,10 +10,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  User
+  Admin
+}
 model User {
   id        Int       @id @default(autoincrement())
   email     String    @unique
   name      String?
+  role      Role      @default(User)
+  /// @HideField()
   password  String
   articles  Article[]
   createdAt DateTime  @default(now())
