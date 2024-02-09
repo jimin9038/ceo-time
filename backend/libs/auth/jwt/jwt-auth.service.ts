@@ -6,7 +6,8 @@ import { verify } from 'argon2'
 export class JwtAuthService {
   async isValidUser(user: User, password: string, isSocialUser?: boolean) {
     if (isSocialUser) {
-      return true
+      return false
+      // TODO: need implementation
     }
 
     if (!user || !(await verify(user.password, password))) {
