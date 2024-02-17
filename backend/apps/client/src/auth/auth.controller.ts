@@ -24,14 +24,13 @@ import {
 } from '@libs/exception'
 import { AuthService } from './auth.service'
 import { LoginUserDto } from './dto/login-user.dto'
-import type { GithubUser, KakaoUser } from './interface/social-user.interface'
 
 @Controller('auth')
 export class AuthController {
   private readonly logger = new Logger(AuthController.name)
 
   constructor(private readonly authService: AuthService) {}
-0
+
   setJwtResponse = (res: Response, jwtTokens: JwtTokens) => {
     res.setHeader('authorization', `Bearer ${jwtTokens.accessToken}`)
     res.cookie(
@@ -91,61 +90,6 @@ export class AuthController {
       }
       this.logger.error(error)
       throw new InternalServerErrorException('Failed to reissue tokens')
-    }
-  }
-
-  @AuthNotNeededIfOpenSpace()
-  @Get('github')
-  @UseGuards(AuthGuard('github'))
-  async moveToGithubLogin() {
-    /* 자동으로 github login page로 redirection */
-  }
-
-  /** github login page에서 로그인에 성공한 후 이 endpoint로 redirection */
-  @AuthNotNeededIfOpenSpace()
-  @Get('github-callback')
-  @UseGuards(AuthGuard('github'))
-  async githubLogin(
-    @Res({ passthrough: true }) res: Response,
-    @Req() req: Request
-  ) {
-    try {
-      const githubUser = req.user as GithubUser
-      return await this.authService.githubLogin(res, githubUser)
-    } catch (error) {
-      if (error instanceof UnidentifiedException) {
-        throw error.convert2HTTPException()
-      }
-      this.logger.error(error)
-      throw new InternalServerErrorException('Login failed')
-    }
-  }
-
-  /** Kakao Login page로 이동 */
-  @AuthNotNeededIfOpenSpace()
-  @Get('kakao')
-  @UseGuards(AuthGuard('kakao'))
-  async moveToKakaoLogin() {
-    /* 자동으로 kakao login page로 redirection */
-  }
-
-  /** Kakao login page에서 로그인에 성공한 후 이 endpoint로 redirection */
-  @AuthNotNeededIfOpenSpace()
-  @Get('kakao-callback')
-  @UseGuards(AuthGuard('kakao'))
-  async kakaoLogin(
-    @Res({ passthrough: true }) res: Response,
-    @Req() req: Request
-  ) {
-    try {
-      const kakaoUser = req.user as KakaoUser
-      return await this.authService.kakaoLogin(res, kakaoUser)
-    } catch (error) {
-      if (error instanceof UnidentifiedException) {
-        throw error.convert2HTTPException()
-      }
-      this.logger.error(error)
-      throw new InternalServerErrorException('Login failed')
     }
   }
 }

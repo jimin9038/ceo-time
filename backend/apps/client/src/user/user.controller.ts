@@ -24,7 +24,7 @@ import {
   ConflictFoundException
 } from '@libs/exception'
 import { DeleteUserDto } from './dto/deleteUser.dto'
-import { NewPasswordDto } from './dto/newPassword.dto'
+// import { NewPasswordDto } from './dto/newPassword.dto'
 import { SignUpDto } from './dto/signup.dto'
 import { UsernameDto } from './dto/username.dto'
 import { UserService } from './user.service'
@@ -35,28 +35,28 @@ export class UserController {
 
   constructor(private readonly userService: UserService) {}
 
-  @Patch('password-reset')
-  @AuthNotNeededIfOpenSpace()
-  async updatePassword(
-    @Body() newPasswordDto: NewPasswordDto,
-    @Req() req: Request
-  ) {
-    try {
-      return await this.userService.updatePassword(newPasswordDto, req)
-    } catch (error) {
-      if (
-        error instanceof UnidentifiedException ||
-        error instanceof UnprocessableDataException
-      ) {
-        throw error.convert2HTTPException()
-      }
-      this.logger.error(error)
-      throw new InternalServerErrorException('password reset failed')
-    }
-  }
+  // @Patch('password-reset')
+  // @AuthNotNeededIfOpenSpace()
+  // async updatePassword(
+  //   @Body() newPasswordDto: NewPasswordDto,
+  //   @Req() req: Request
+  // ) {
+  //   try {
+  //     return await this.userService.updatePassword(newPasswordDto, req)
+  //   } catch (error) {
+  //     if (
+  //       error instanceof UnidentifiedException ||
+  //       error instanceof UnprocessableDataException
+  //     ) {
+  //       throw error.convert2HTTPException()
+  //     }
+  //     this.logger.error(error)
+  //     throw new InternalServerErrorException('password reset failed')
+  //   }
+  // }
 
   @Post('sign-up')
-  // @AuthNotNeededIfOpenSpace()
+  @AuthNotNeededIfOpenSpace()
   async signUp(@Body() signUpDto: SignUpDto, @Req() req: Request) {
     try {
       await this.userService.signUp(req, signUpDto)
