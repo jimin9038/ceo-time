@@ -1,9 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+import { CACHE_MANAGER } from '@nestjs/cache-manager'
 import { Inject, Injectable } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { JwtService, type JwtVerifyOptions } from '@nestjs/jwt'
+import { Cache } from 'cache-manager'
 import type { Response } from 'express'
 import { JwtAuthService, type JwtPayload } from '@libs/auth'
+import { refreshTokenCacheKey } from '@libs/cache'
 import {
   ACCESS_TOKEN_EXPIRE_TIME,
   REFRESH_TOKEN_COOKIE_OPTIONS,
@@ -43,8 +46,6 @@ export class AuthService {
     if (!isValidUser) {
       throw new UnidentifiedException('username or password')
     }
-
-    await this.userService.updateLastLogin(user.username)
 
     return await this.createJwtTokens(user.id, user.username)
   }
@@ -100,6 +101,4 @@ export class AuthService {
   async deleteRefreshToken(userId: number) {
     return await this.cacheManager.del(refreshTokenCacheKey(userId))
   }
-
-
 }
