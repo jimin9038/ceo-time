@@ -8,7 +8,7 @@ then
   exit 1
 fi
 
-BASEDIR=$(dirname $(dirname $(realpath $0)))
+BASEDIR=$(dirname $(realpath $0))
 
 cd $BASEDIR
 
@@ -36,6 +36,18 @@ do
       echo "$name=$value" >> .env
   fi
 done < .env.development
+
+# If dotenv schema is not updated, remove the file
+if [ -f backend/.env ] && grep -q DATABASE_URL backend/.env
+then
+  rm backend/.env
+fi
+
+# If .env does not exist, create one
+if [ ! -f backend/.env ]
+then
+  echo "JWT_SECRET=$(head -c 64 /dev/urandom | LC_ALL=C tr -dc A-Za-z0-9 | sha256sum | head -c 64)" >> backend/.env
+fi
 
 npm install -g pnpm@latest
 pnpm install

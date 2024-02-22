@@ -5,7 +5,7 @@ ports:
 tasks:
   - name: Setup
     before: docker compose up -d
-    init: setup.sh
+    init: ./setup.sh
 vscode:
   extensions:
     - eamodio.gitlens
