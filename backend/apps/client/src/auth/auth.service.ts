@@ -31,7 +31,7 @@ export class AuthService {
     @Inject(CACHE_MANAGER) private readonly cacheManager: Cache
   ) {}
 
-  async issueJwtTokens(loginUserDto: LoginUserDto, isSocialUser?: boolean) {
+  async issueJwtTokens(loginUserDto: LoginUserDto) {
     const user = await this.userService.getUserCredential(loginUserDto.username)
     if (!user) {
       throw new UnidentifiedException('username or password')
@@ -39,8 +39,7 @@ export class AuthService {
 
     const isValidUser = await this.jwtAuthService.isValidUser(
       user,
-      loginUserDto.password,
-      isSocialUser
+      loginUserDto.password
     )
 
     if (!isValidUser) {
