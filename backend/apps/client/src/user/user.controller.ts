@@ -11,7 +11,7 @@ import {
   Query
 } from '@nestjs/common'
 import { Prisma } from '@prisma/client'
-import { Request } from 'express'
+import type { Request } from 'express'
 import { AuthenticatedRequest, AuthNotNeededIfOpenSpace } from '@libs/auth'
 import {
   UnprocessableDataException,

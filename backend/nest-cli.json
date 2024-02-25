@@ -43,6 +43,15 @@
         "tsConfigPath": "libs/prisma/tsconfig.lib.json"
       }
     },
+    "cache": {
+      "type": "library",
+      "root": "libs/cache",
+      "entryFile": "index",
+      "sourceRoot": "libs/cache/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/cache/tsconfig.lib.json"
+      }
+    },
     "auth": {
       "type": "library",
       "root": "libs/auth",
@@ -50,6 +59,33 @@
       "sourceRoot": "libs/auth/src",
       "compilerOptions": {
         "tsConfigPath": "libs/auth/tsconfig.lib.json"
+      }
+    },
+    "exception": {
+      "type": "library",
+      "root": "libs/exception",
+      "entryFile": "index",
+      "sourceRoot": "libs/exception/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/exception/tsconfig.lib.json"
+      }
+    },
+    "constants": {
+      "type": "library",
+      "root": "libs/constants",
+      "entryFile": "index",
+      "sourceRoot": "libs/constants/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/constants/tsconfig.lib.json"
+      }
+    },
+    "types": {
+      "type": "library",
+      "root": "libs/types",
+      "entryFile": "index",
+      "sourceRoot": "libs/types/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/types/tsconfig.lib.json"
       }
     }
   }
