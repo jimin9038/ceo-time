@@ -7,6 +7,6 @@ export class UserController {
 
   @Get()
   getUser(id: number) {
-    this.userService.user({ id: id })
+    this.userService.user({ id })
   }
 }

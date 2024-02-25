@@ -18,17 +18,18 @@ export class RolesGuard implements CanActivate {
     private readonly service: RolesService
   ) {
     Object.keys(Role).forEach((key, index) => {
-    this.#rolesHierarchy[key] = index
+      this.#rolesHierarchy[key] = index
     })
   }
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request: AuthenticatedRequest = context.switchToHttp().getRequest()
 
-    const role = this.reflector.getAllAndOverride<Role>(ROLES_KEY, [
-      context.getHandler(),
-      context.getClass()
-    ]) ?? Role.User
+    const role =
+      this.reflector.getAllAndOverride<Role>(ROLES_KEY, [
+        context.getHandler(),
+        context.getClass()
+      ]) ?? Role.User
 
     const user = request.user
     if (!user.role) {

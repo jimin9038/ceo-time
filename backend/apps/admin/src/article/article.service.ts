@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common'
+import type { Prisma } from '@prisma/client'
 import { PrismaService } from '@libs/prisma'
-import { Prisma } from '@prisma/client'
 
 @Injectable()
 export class ArticleService {
@@ -33,7 +33,7 @@ export class ArticleService {
         : null,
       orderBy,
       where: {
-        published: published,
+        published,
         ArticleCategory: {
           every: {
             categoryId: { in: category }

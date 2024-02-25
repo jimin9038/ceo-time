@@ -12,10 +12,10 @@ import {
   Logger,
   InternalServerErrorException,
   Param,
-NotFoundException
+  NotFoundException
 } from '@nestjs/common'
-import { ArticleService } from './article.service'
 import { Prisma } from '@prisma/client'
+import { ArticleService } from './article.service'
 
 @Injectable()
 export class CursorValidationPipe implements PipeTransform {

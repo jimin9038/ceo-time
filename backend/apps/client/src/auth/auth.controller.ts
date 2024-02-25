@@ -7,10 +7,8 @@ import {
   Res,
   UnauthorizedException,
   InternalServerErrorException,
-  Logger,
-  UseGuards
+  Logger
 } from '@nestjs/common'
-import { AuthGuard } from '@nestjs/passport'
 import { Request, Response } from 'express'
 import {
   AuthenticatedRequest,

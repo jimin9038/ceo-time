@@ -1,24 +1,26 @@
-import { Injectable, Logger } from '@nestjs/common'
-import { ConfigService } from '@nestjs/config'
+import { CACHE_MANAGER } from '@nestjs/cache-manager'
+import { Inject, Injectable, Logger } from '@nestjs/common'
 import type { User } from '@prisma/client'
 import { hash } from 'argon2'
 import type { Request } from 'express'
-import { type JwtAuthService } from '@libs/auth'
 import {
   DuplicateFoundException,
+  UnidentifiedException,
   UnprocessableDataException
 } from '@libs/exception'
 import { PrismaService } from '@libs/prisma'
+import { JwtAuthService } from './../../../../libs/auth/src/jwt/jwt-auth.service'
 import type { SignUpDto } from './dto/signup.dto'
 import type { UsernameDto } from './dto/username.dto'
-import { JwtService } from '@nestjs/jwt'
 
 @Injectable()
 export class UserService {
   private readonly logger = new Logger(UserService.name)
 
   constructor(
-    private readonly prisma: PrismaService
+    @Inject(CACHE_MANAGER) private cacheManager: Cache,
+    private readonly prisma: PrismaService,
+    private readonly jwtAuthService: JwtAuthService
   ) {}
 
   async signUp(req: Request, signUpDto: SignUpDto) {
@@ -74,7 +76,6 @@ export class UserService {
   //   return user
   // }
 
-
   isValidUsername(username: string): boolean {
     const validUsername = /^[a-z0-9]{3,10}$/
     if (!validUsername.test(username)) {
@@ -106,6 +107,11 @@ export class UserService {
   }
 
   async deleteUser(username: string, password: string) {
+    const user = await this.getUserCredential(username)
+    if (!(user && (await this.jwtAuthService.isValidUser(user, password)))) {
+      this.logger.debug('user not exist or login fail')
+      throw new UnidentifiedException('password')
+    }
     const deletedUser = await this.prisma.user.delete({
       where: {
         username

@@ -2,19 +2,16 @@ import {
   Body,
   Get,
   InternalServerErrorException,
-  Patch,
   Post,
   Req,
-  Res,
   UnauthorizedException,
   Controller,
-  NotFoundException,
   Logger,
   Delete,
   Query
 } from '@nestjs/common'
 import { Prisma } from '@prisma/client'
-import { Request, type Response } from 'express'
+import { Request } from 'express'
 import { AuthenticatedRequest, AuthNotNeededIfOpenSpace } from '@libs/auth'
 import {
   UnprocessableDataException,

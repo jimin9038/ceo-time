@@ -4,12 +4,10 @@ import { Inject, Injectable } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { JwtService, type JwtVerifyOptions } from '@nestjs/jwt'
 import { Cache } from 'cache-manager'
-import type { Response } from 'express'
 import { JwtAuthService, type JwtPayload } from '@libs/auth'
 import { refreshTokenCacheKey } from '@libs/cache'
 import {
   ACCESS_TOKEN_EXPIRE_TIME,
-  REFRESH_TOKEN_COOKIE_OPTIONS,
   REFRESH_TOKEN_EXPIRE_TIME
 } from '@libs/constants'
 import {

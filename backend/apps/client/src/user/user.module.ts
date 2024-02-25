@@ -2,9 +2,7 @@ import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { JwtModule, type JwtModuleOptions } from '@nestjs/jwt'
 import { JwtAuthModule } from '@libs/auth'
-import {
-  UserController
-} from './user.controller'
+import { UserController } from './user.controller'
 import { UserService } from './user.service'
 
 @Module({
