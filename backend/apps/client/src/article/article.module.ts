@@ -5,6 +5,7 @@ import { ArticleService } from './article.service'
 
 @Module({
   imports: [RolesModule],
-  providers: [ArticleService, ArticleController]
+  controllers: [ArticleController],
+  providers: [ArticleService]
 })
 export class ArticleModule {}

@@ -9,6 +9,7 @@ import {
   InternalServerErrorException,
   Logger
 } from '@nestjs/common'
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import type { Request, Response } from 'express'
 import {
   AuthenticatedRequest,

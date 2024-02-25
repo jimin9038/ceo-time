@@ -11,6 +11,7 @@ import {
   Query
 } from '@nestjs/common'
 import { Prisma } from '@prisma/client'
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import type { Request } from 'express'
 import { AuthenticatedRequest, AuthNotNeededIfOpenSpace } from '@libs/auth'
 import {
