@@ -1,9 +1,12 @@
 import { Module } from '@nestjs/common'
+import { ConfigModule } from '@nestjs/config'
 import { AdminController } from './admin.controller'
 import { AdminService } from './admin.service'
-import { ConfigModule } from '@nestjs/config'
+import { ArticleModule } from './article/article.module'
+import { UserModule } from './user/user.module'
+
 @Module({
-  imports: [ConfigModule.forRoot()],
+  imports: [ConfigModule.forRoot(), UserModule, ArticleModule],
   controllers: [AdminController],
   providers: [AdminService]
 })
