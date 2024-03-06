@@ -1,4 +1,3 @@
-import { baseUrl } from '@/lib/constants'
 import Image from 'next/image'
 import Photo from '@/public/1.png'
 interface Props {
@@ -6,7 +5,7 @@ interface Props {
   content: String
 }
 
-export default function NoticeDetail({title, content}: Props) {
+export default function MiddleArticle({title, content}: Props) {
   return (
     <article className="w-full relative py-6">
       <p className="pb-3">

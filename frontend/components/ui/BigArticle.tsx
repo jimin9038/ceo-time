@@ -22,7 +22,7 @@ export default function NoticeDetail({title, content}: Props) {
       <p className="py-4">
         <h1 className="break-words text-3xl font-semibold lg:whitespace-nowrap lg:overflow-hidden lg:overflow-ellipsis">{title}</h1>
       </p>
-      <p className="border-b border-b-gray-200 py-4 prose w-full max-w-full overflow-ellipsis">
+      <p className="py-4 prose w-full max-w-full overflow-ellipsis">
         <h1> {content} </h1>
       </p>
     </article>
