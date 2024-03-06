@@ -22,6 +22,7 @@ export default function NoticeDetail({title, content}: Props) {
             className="img-fluid main-news-img-pc"
             fill={true}
             alt='Article image'
+            objectFit='cover'
           >
           </Image>
         </div>
