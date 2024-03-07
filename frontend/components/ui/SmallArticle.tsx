@@ -19,10 +19,9 @@ export default function SmallArticle({ title, content }: Props) {
         <div className="relative mr-3 h-20 w-32 flex-shrink-0">
           <Image
             src={Photo}
-            className="img-fluid main-news-img-pc"
+            className="object-cover"
             fill={true}
             alt="Article image"
-            objectFit="cover"
           ></Image>
         </div>
         <p className="prose flex lg:max-h-16 lg:overflow-hidden lg:overflow-ellipsis lg:text-sm">

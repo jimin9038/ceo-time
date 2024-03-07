@@ -2,7 +2,6 @@
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Separator } from '@/components/ui/separator'
 import CodedangLogo from '@/public/logo.png'
 import useAuthModalStore from '@/stores/authModal'
 import { signIn } from 'next-auth/react'
@@ -65,13 +64,6 @@ export default function SignIn() {
             Log In
           </Button>
         </form>
-        <div className="flex items-center justify-center gap-5">
-          <Separator className="flex-1" />
-          <p className="w-fit flex-none text-center text-xs text-gray-500">
-            OR continue with
-          </p>
-          <Separator className="flex-1" />
-        </div>
       </div>
       <div className="flex items-center justify-between">
         <Button
@@ -81,12 +73,12 @@ export default function SignIn() {
         >
           Sign Up
         </Button>
-        <Button
+        {/* <Button
           variant={'link'}
           className="h-5 w-fit p-0 py-2 text-xs text-gray-500"
         >
           Forgot ID/Password?
-        </Button>
+        </Button> */}
       </div>
     </div>
   )

@@ -21,10 +21,9 @@ export default function MiddleArticle({ title, content }: Props) {
         <div className="relative ml-3 h-28 w-36 flex-shrink-0">
           <Image
             src={Photo}
-            className="img-fluid main-news-img-pc"
+            className="object-cover"
             fill={true}
             alt="Article image"
-            objectFit="cover"
           ></Image>
         </div>
       </div>

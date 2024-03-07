@@ -1,83 +1,51 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
 import CodedangLogo from '@/public/logo.png'
 import useAuthModalStore from '@/stores/authModal'
-import { signIn } from 'next-auth/react'
+import useSignUpModalStore from '@/stores/signUpModal'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
-import { useState } from 'react'
-import type { SubmitHandler } from 'react-hook-form'
-import { useForm } from 'react-hook-form'
-import { toast } from 'sonner'
+import { IoMdArrowBack } from 'react-icons/io'
+import SignUpEmailVerify from './SignUpEmailVerify'
+import SignUpRegister from './SignUpRegister'
+import SignUpWelcome from './SignUpWelcome'
 
-interface Inputs {
-  username: string
-  password: string
-}
+export default function SignUp() {
+  const { showSignIn } = useAuthModalStore((state) => state)
+  const { modalPage, backModal } = useSignUpModalStore((state) => state)
 
-export default function SignIn() {
-  const [disableButton, setDisableButton] = useState(false)
-  const { showSignUp } = useAuthModalStore((state) => state)
-  const router = useRouter()
-  const { register, handleSubmit } = useForm<Inputs>()
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    setDisableButton(true)
-    try {
-      const res = await signIn('credentials', {
-        username: data.username,
-        password: data.password,
-        redirect: false
-      })
-
-      if (!res?.error) {
-        router.refresh()
-        toast.success(`Welcome back, ${data.username}!`)
-      } else {
-        toast.error('Failed to log in')
-      }
-    } catch (error) {
-      console.error('Error during login:', error)
-      toast.error('An unexpected error occurred')
-    } finally {
-      setDisableButton(false)
-    }
-  }
   return (
-    <div className="flex h-full w-full flex-col justify-between">
-      <div className="flex justify-center pt-4">
-        <Image src={CodedangLogo} alt="코드당" height={64} />
-      </div>
-      <div className="flex flex-col gap-4">
-        <form
-          className="flex w-full flex-col gap-3"
-          onSubmit={handleSubmit(onSubmit)}
+    <div className="flex h-full flex-col items-center justify-center">
+      {!(modalPage === 0) && (
+        <button
+          onClick={backModal}
+          className="absolute left-4 top-4 h-4 w-4 rounded-sm opacity-70 ring-offset-white transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-gray-950 focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-gray-100 data-[state=open]:text-gray-500 dark:ring-offset-gray-950 dark:focus:ring-gray-300 dark:data-[state=open]:bg-gray-800 dark:data-[state=open]:text-gray-400"
         >
-          <Input placeholder="User ID" type="text" {...register('username')} />
-          <Input
-            placeholder="Password"
-            type="password"
-            {...register('password')}
-          />
-          <Button className="w-full" type="submit" disabled={disableButton}>
-            Log In
-          </Button>
-        </form>
-      </div>
-      <div className="flex items-center justify-between">
+          <IoMdArrowBack />
+        </button>
+      )}
+
+      <Image
+        className="absolute left-8 top-10"
+        src={CodedangLogo}
+        alt="codedang"
+        width={70}
+      />
+
+      {modalPage === 0 && <SignUpWelcome />}
+      {modalPage === 1 && <SignUpEmailVerify />}
+      {modalPage === 2 && <SignUpRegister />}
+
+      <div className="absolute bottom-6 flex items-center justify-center">
+        <span className="h-5 w-fit text-xs leading-5 text-gray-500">
+          Already have account?
+        </span>
         <Button
-          onClick={() => showSignUp()}
+          onClick={() => showSignIn()}
           variant={'link'}
-          className="h-5 w-fit p-0 py-2 text-xs text-gray-500"
+          className="h-5 w-fit text-xs text-gray-500"
         >
-          Sign Up
-        </Button>
-        <Button
-          variant={'link'}
-          className="h-5 w-fit p-0 py-2 text-xs text-gray-500"
-        >
-          Forgot ID/Password?
+          Log In
         </Button>
       </div>
     </div>

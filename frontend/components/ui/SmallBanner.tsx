@@ -14,10 +14,9 @@ export default function SmallBanner() {
         <div className="relative mr-3 h-28 w-full flex-shrink-0">
           <Image
             src={Photo}
-            className="img-fluid main-news-img-pc"
+            className="object-cover"
             fill={true}
             alt="Article image"
-            objectFit="cover"
           ></Image>
         </div>
       </div>

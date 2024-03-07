@@ -12,10 +12,9 @@ export default function NoticeDetail({ title, content }: Props) {
       <div className="relative flex w-full pb-96">
         <Image
           src={Photo}
-          className="img-fluid main-news-img-pc"
+          className="object-cover"
           fill={true}
           alt="Article image"
-          objectFit="cover"
         ></Image>
       </div>
       <p className="py-4">
