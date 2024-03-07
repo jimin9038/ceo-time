@@ -24,7 +24,7 @@ services:
     volumes:
       - ceotime-database:/var/lib/postgresql/data
   cache:
-    container_name: codedang-cache
+    container_name: ceotime-cache
     image: redis:7-alpine
     ports:
       - 6380:6379
