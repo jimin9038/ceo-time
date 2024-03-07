@@ -1,4 +1,4 @@
-import Photo from '@/public/1.png'
+import Photo from '@/public/lh.png'
 import Image from 'next/image'
 
 // interface Props {
