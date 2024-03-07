@@ -1,5 +1,5 @@
 // import { baseUrl } from '@/lib/constants'
-import Photo from '@/public/sk-innovation.jpg'
+import Photo from '@/public/sk-innovation.png'
 import Image from 'next/image'
 
 // interface Props {
