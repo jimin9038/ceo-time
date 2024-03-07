@@ -1,33 +1,34 @@
-import { baseUrl } from '@/lib/constants'
-import Image from 'next/image'
+// import { baseUrl } from '@/lib/constants'
 import Photo from '@/public/1.png'
+import Image from 'next/image'
+
 interface Props {
-  title: String,
-  content: String
+  title: string
+  content: string
 }
 
-export default function SmallArticle({title, content}: Props) {
+export default function SmallArticle({ title, content }: Props) {
   return (
-    <article className="w-full relative py-6">
+    <article className="relative w-full py-6">
       <p className="pb-3">
-        <h1 className="break-words text-xl h-14 overflow-hidden overflow-ellipsis lg:text-lg font-semibold">{title}</h1>
+        <h1 className="h-14 overflow-hidden overflow-ellipsis break-words text-xl font-semibold lg:text-lg">
+          {title}
+        </h1>
       </p>
-      <div className="flex relative">
-        <div className="relative mr-3 w-32 h-20 flex-shrink-0">
+      <div className="relative flex">
+        <div className="relative mr-3 h-20 w-32 flex-shrink-0">
           <Image
             src={Photo}
             className="img-fluid main-news-img-pc"
             fill={true}
-            alt='Article image'
-            objectFit='cover'
-          >
-          </Image>
+            alt="Article image"
+            objectFit="cover"
+          ></Image>
         </div>
-        <p className="prose flex lg:max-h-16 lg:text-sm lg:overflow-hidden lg:overflow-ellipsis">
+        <p className="prose flex lg:max-h-16 lg:overflow-hidden lg:overflow-ellipsis lg:text-sm">
           <h1> {content} </h1>
         </p>
       </div>
-
     </article>
   )
 }

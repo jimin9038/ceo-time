@@ -1,28 +1,29 @@
-import { baseUrl } from '@/lib/constants'
-import Image from 'next/image'
 import Photo from '@/public/1.png'
+import Image from 'next/image'
+
 interface Props {
-  title: String,
-  content: String
+  title: string
+  content: string
 }
 
-export default function NoticeDetail({title, content}: Props) {
+export default function NoticeDetail({ title, content }: Props) {
   return (
-    <article className="w-full relative">
-      <div className="pb-96 relative w-full flex">
+    <article className="relative w-full">
+      <div className="relative flex w-full pb-96">
         <Image
           src={Photo}
           className="img-fluid main-news-img-pc"
           fill={true}
-          alt='Article image'
-          objectFit='cover'
-        >
-        </Image>
+          alt="Article image"
+          objectFit="cover"
+        ></Image>
       </div>
       <p className="py-4">
-        <h1 className="break-words text-3xl font-semibold lg:whitespace-nowrap lg:overflow-hidden lg:overflow-ellipsis">{title}</h1>
+        <h1 className="break-words text-3xl font-semibold lg:overflow-hidden lg:overflow-ellipsis lg:whitespace-nowrap">
+          {title}
+        </h1>
       </p>
-      <p className="py-4 prose w-full max-w-full overflow-ellipsis">
+      <p className="prose w-full max-w-full overflow-ellipsis py-4">
         <h1> {content} </h1>
       </p>
     </article>

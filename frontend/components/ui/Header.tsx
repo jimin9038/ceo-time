@@ -1,21 +1,27 @@
 'use client'
-import React, { useState } from 'react';
-import { Button } from './button';
-import NavLink from './NavLink';
+
+// import { cn } from '@/lib/utils'
+import Logo from '@/public/logo.png'
+import Image from 'next/image'
 import Link from 'next/link'
-import Image from 'next/image';
-import Logo from '@/public/logo.png';
-import { cn } from '@/lib/utils';
+// import React, { useState } from 'react'
+import NavLink from './NavLink'
+
+// import { Button } from './button'
 
 export default function Header() {
   return (
-    <header className="max-w-6xl border-b-gray grid h-16 w-full place-items-center border-b bg-white">
-      <div className={"flex w-full max-w-7xl items-center justify-between gap-5 navbar"}>
+    <header className="border-b-gray grid h-16 w-full max-w-6xl place-items-center border-b bg-white">
+      <div
+        className={
+          'navbar flex w-full max-w-7xl items-center justify-between gap-5'
+        }
+      >
         <div className="flex w-1/2 min-w-fit items-center justify-between gap-8 pr-20">
           <Link href="/">
-            <Image src={Logo} alt="코드당" width={180} className='min-w-40' />
+            <Image src={Logo} alt="코드당" width={180} className="min-w-40" />
           </Link>
-          <nav className="gap-5 capitalize flex whitespace-nowrap">
+          <nav className="flex gap-5 whitespace-nowrap capitalize">
             <NavLink href="/articles/ceo" text="CEO" />
             <NavLink href="/articles/c-level" text="C-LEVEL" />
             <NavLink href="/articles/view" text="VIEW" />
@@ -33,4 +39,3 @@ export default function Header() {
     </header>
   )
 }
-
