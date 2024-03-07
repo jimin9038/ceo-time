@@ -11,6 +11,19 @@ services:
       - .env
     command: pnpm run --filter=backend start:dev
     ports:
+      - 4000:4000
+  admin:
+    container_name: ceotime-admin
+    build:
+      dockerfile: Dockerfile
+      context: .
+      target: builder
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    command: pnpm run --filter=backend start:dev
+    ports:
       - 3000:3000
   database:
     container_name: ceotime-database

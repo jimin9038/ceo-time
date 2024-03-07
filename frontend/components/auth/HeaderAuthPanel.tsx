@@ -55,7 +55,7 @@ export default function HeaderAuthPanel({
           </DropdownMenuTrigger>
           <DropdownMenuContent>
             {session?.user.role !== 'User' && (
-              <Link href={{ pathname: '/admin' }}>
+              <Link href="/">
                 <DropdownMenuItem className="flex cursor-pointer items-center gap-1 font-semibold">
                   <UserRoundCog className="size-4" /> Management
                 </DropdownMenuItem>

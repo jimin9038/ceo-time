@@ -2,6 +2,7 @@
 import HeaderAuthPanel from '@/components/auth/HeaderAuthPanel'
 import { auth } from '@/lib/auth'
 import Logo from '@/public/logo.png'
+import type { Route } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 // import React, { useState } from 'react'
@@ -23,17 +24,17 @@ export default async function Header() {
             <Image src={Logo} alt="코드당" width={180} className="min-w-40" />
           </Link>
           <nav className="flex gap-5 whitespace-nowrap capitalize">
-            <NavLink href="/articles/ceo" text="CEO" />
-            <NavLink href="/articles/c-level" text="C-LEVEL" />
-            <NavLink href="/articles/view" text="VIEW" />
-            <NavLink href="/articles/focus" text="FOCUS" />
-            <NavLink href="/articles/time" text="TIME" />
-            <NavLink href="/articles/innovation" text="INNOVATION" />
-            <NavLink href="/articles/management" text="MANAGEMENT" />
-            <NavLink href="/articles/review" text="REVIEW" />
-            <NavLink href="/articles/special-report" text="SPECIAL REPORT" />
-            <NavLink href="/articles/vivid" text="VIVID" />
-            <NavLink href="/articles/life" text="LIFE" />
+            <NavLink href="/" text="CEO" />
+            <NavLink href="/" text="C-LEVEL" />
+            <NavLink href="/" text="VIEW" />
+            <NavLink href="/" text="FOCUS" />
+            <NavLink href="/" text="TIME" />
+            <NavLink href="/" text="INNOVATION" />
+            <NavLink href="/" text="MANAGEMENT" />
+            <NavLink href="/" text="REVIEW" />
+            <NavLink href="/" text="SPECIAL REPORT" />
+            <NavLink href="/" text="VIVID" />
+            <NavLink href={'/articles/life' as Route} text="LIFE" />
           </nav>
         </div>
         <HeaderAuthPanel session={session} />
