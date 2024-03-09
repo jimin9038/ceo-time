@@ -1,8 +1,8 @@
-// import { ValidationPipe } from '@nestjs/common'
+import { ValidationPipe } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
-// import * as cookieParser from 'cookie-parser'
-// import { Logger, LoggerErrorInterceptor } from 'nestjs-pino'
+import * as cookieParser from 'cookie-parser'
+import { Logger, LoggerErrorInterceptor } from 'nestjs-pino'
 import { AppModule } from './app.module'
 
 const bootstrap = async () => {
@@ -10,10 +10,10 @@ const bootstrap = async () => {
     bufferLogs: true
   })
 
-  // app.useLogger(app.get(Logger))
-  // app.useGlobalInterceptors(new LoggerErrorInterceptor())
-  // app.useGlobalPipes(new ValidationPipe({ whitelist: true }))
-  // app.use(cookieParser())
+  app.useLogger(app.get(Logger))
+  app.useGlobalInterceptors(new LoggerErrorInterceptor())
+  app.useGlobalPipes(new ValidationPipe({ whitelist: true }))
+  app.use(cookieParser())
   if (process.env.NODE_ENV !== 'production') {
     app.enableCors({
       origin: 'http://localhost:5525',

@@ -15,6 +15,7 @@ import {
   NotFoundException
 } from '@nestjs/common'
 import { Prisma } from '@prisma/client'
+import { UseRolesGuard } from '@libs/auth'
 import { ArticleService } from './article.service'
 
 @Injectable()
@@ -31,6 +32,7 @@ export class CursorValidationPipe implements PipeTransform {
     throw new BadRequestException('Cursor must be a positive number')
   }
 }
+@UseRolesGuard('Admin')
 @Controller('article')
 export class ArticleController {
   private readonly logger = new Logger(ArticleController.name)
@@ -65,6 +67,21 @@ export class ArticleController {
 
   @Get(':id')
   async getArticleByID(@Param('id', ParseIntPipe) id: number) {
+    try {
+      return await this.articleService.getArticleByID(id)
+    } catch (error) {
+      if (
+        error instanceof Prisma.PrismaClientKnownRequestError &&
+        error.name === 'NotFoundError'
+      ) {
+        throw new NotFoundException(error.message)
+      }
+      this.logger.error(error)
+      throw new InternalServerErrorException()
+    }
+  }
+  @Get(':ids')
+  async getArticleByIDs(@Param('id', ParseIntPipe) id: number) {
     try {
       return await this.articleService.getArticleByID(id)
     } catch (error) {

@@ -12,15 +12,12 @@ import { UserModule } from './user/user.module'
 
 @Module({
   imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
     CacheModule.registerAsync({
       isGlobal: true,
       useClass: CacheConfigService
     }),
     ConfigModule.forRoot(),
-    CacheModule.registerAsync({
-      isGlobal: true,
-      useClass: CacheConfigService
-    }),
     JwtAuthModule,
     RolesModule,
     PrismaModule,

@@ -98,6 +98,11 @@ export class UserController {
     }
   }
 
+  @Get()
+  async getUserProfile(@Req() req: AuthenticatedRequest) {
+    return await this.userService.getUserProfile(req.user.username)
+  }
+
   @Get('username-check')
   @AuthNotNeededIfOpenSpace()
   async checkDuplicatedUsername(@Query() usernameDto: UsernameDto) {

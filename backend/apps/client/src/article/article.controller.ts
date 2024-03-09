@@ -15,6 +15,7 @@ import {
   NotFoundException
 } from '@nestjs/common'
 import { Prisma } from '@prisma/client'
+import { AuthNotNeededIfOpenSpace } from '@libs/auth'
 import { ArticleService } from './article.service'
 
 @Injectable()
@@ -31,12 +32,14 @@ export class CursorValidationPipe implements PipeTransform {
     throw new BadRequestException('Cursor must be a positive number')
   }
 }
+
 @Controller('article')
 export class ArticleController {
   private readonly logger = new Logger(ArticleController.name)
 
   constructor(private readonly articleService: ArticleService) {}
 
+  @AuthNotNeededIfOpenSpace()
   @Get()
   async getArticles(
     @Query(
@@ -58,11 +61,12 @@ export class ArticleController {
         take
       })
     } catch (error) {
-      this.logger.error(error)
+      this.logger.error(error) 
       throw new InternalServerErrorException()
     }
   }
 
+  @AuthNotNeededIfOpenSpace()
   @Get(':id')
   async getArticleByID(@Param('id', ParseIntPipe) id: number) {
     try {

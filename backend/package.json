@@ -32,14 +32,17 @@
     "chai": "^5.1.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
+    "colorette": "^2.0.20",
     "cookie-parser": "^1.4.6",
     "cross-env": "^7.0.3",
     "nestjs-pino": "^4.0.0",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
+    "pino-pretty": "^10.3.1",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "sql-formatter": "^15.2.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.2.1",

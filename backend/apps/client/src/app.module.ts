@@ -2,8 +2,10 @@ import { CacheModule } from '@nestjs/cache-manager'
 import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { APP_GUARD } from '@nestjs/core'
+import { LoggerModule } from 'nestjs-pino'
 import { JwtAuthGuard, JwtAuthModule } from '@libs/auth'
 import { CacheConfigService } from '@libs/cache'
+import { pinoLoggerModuleOption } from '@libs/logger'
 import { PrismaModule } from '@libs/prisma'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
@@ -23,7 +25,8 @@ import { UserModule } from './user/user.module'
     AuthModule,
     UserModule,
     AuthModule,
-    ArticleModule
+    ArticleModule,
+    LoggerModule.forRoot(pinoLoggerModuleOption)
   ],
   controllers: [AppController],
   providers: [AppService, { provide: APP_GUARD, useClass: JwtAuthGuard }]

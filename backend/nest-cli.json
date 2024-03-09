@@ -10,6 +10,7 @@
     ],
     "watchAssets": true,
     "deleteOutDir": true,
+    "plugins": ["@nestjs/swagger"],
     "builder": "webpack",
     "tsConfigPath": "apps/client/tsconfig.app.json"
   },
@@ -86,6 +87,15 @@
       "sourceRoot": "libs/types/src",
       "compilerOptions": {
         "tsConfigPath": "libs/types/tsconfig.lib.json"
+      }
+    },
+    "logger": {
+      "type": "library",
+      "root": "libs/logger",
+      "entryFile": "index",
+      "sourceRoot": "libs/logger/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/logger/tsconfig.lib.json"
       }
     }
   }
