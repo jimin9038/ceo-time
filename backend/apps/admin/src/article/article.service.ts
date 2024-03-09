@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common'
 import type { Prisma } from '@prisma/client'
 import { PrismaService } from '@libs/prisma'
+import { CreateArticleDto } from './dto/create-article.dto'
+import { AuthNotNeededIfOpenSpace } from '@libs/auth'
 
 @Injectable()
 export class ArticleService {
@@ -43,5 +45,20 @@ export class ArticleService {
     })
 
     return articles
+  }
+
+  @AuthNotNeededIfOpenSpace()
+  async createArticle(createArticleDto: CreateArticleDto) {
+    // user -> author
+    const { title, content, published } = createArticleDto
+    const article = await this.prisma.article.create({
+      data: {
+        title,
+        content,
+        published
+      }
+    })
+
+    return article
   }
 }

@@ -12,11 +12,19 @@ import {
   Logger,
   InternalServerErrorException,
   Param,
-  NotFoundException
+  NotFoundException,
+  Post,
+  Body,
+  Req
 } from '@nestjs/common'
 import { Prisma } from '@prisma/client'
-import { UseRolesGuard } from '@libs/auth'
+import {
+  AuthNotNeededIfOpenSpace,
+  AuthenticatedRequest,
+  UseRolesGuard
+} from '@libs/auth'
 import { ArticleService } from './article.service'
+import { CreateArticleDto } from './dto/create-article.dto'
 
 @Injectable()
 export class CursorValidationPipe implements PipeTransform {
@@ -32,7 +40,8 @@ export class CursorValidationPipe implements PipeTransform {
     throw new BadRequestException('Cursor must be a positive number')
   }
 }
-@UseRolesGuard('Admin')
+// @UseRolesGuard('Admin')
+@AuthNotNeededIfOpenSpace()
 @Controller('article')
 export class ArticleController {
   private readonly logger = new Logger(ArticleController.name)
@@ -94,5 +103,13 @@ export class ArticleController {
       this.logger.error(error)
       throw new InternalServerErrorException()
     }
+  }
+  @AuthNotNeededIfOpenSpace()
+  @Post()
+  async createArticle(
+    @Req() req: AuthenticatedRequest,
+    @Body() createArticleDto: CreateArticleDto
+  ) {
+    await this.articleService.createArticle(createArticleDto)
   }
 }

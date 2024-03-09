@@ -23,11 +23,11 @@ const sessionCookieName = process.env.NEXTAUTH_URL?.startsWith('https://')
 
 export const middleware = async (req: NextRequest) => {
   const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET })
-  if (
-    req.nextUrl.pathname.startsWith('/admin') &&
-    (!token || token.role === 'User')
-  )
-    return NextResponse.redirect(new URL('/', req.url))
+  // if (
+  //   req.nextUrl.pathname.startsWith('/admin') &&
+  //   (!token || token.role === 'User')
+  // )
+  //   return NextResponse.redirect(new URL('/', req.url))
 
   if (token && token.accessTokenExpires <= Date.now()) {
     // If access token is expired, reissue access token.

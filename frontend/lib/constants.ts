@@ -8,7 +8,7 @@ export const baseUrl = process.env.NEXT_PUBLIC_BASEURL
  * The base URL for the admin API.
  * @constant
  */
-export const adminBaseUrl = process.env.NEXT_PUBLIC_GQL_BASEURL
+export const adminBaseUrl = process.env.NEXT_PUBLIC_ADMIN_BASEURL
 
 /**
  * The milliseconds per minute.
