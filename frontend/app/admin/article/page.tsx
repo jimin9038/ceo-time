@@ -1,43 +1,32 @@
-'use client'
+import { Skeleton } from '@/components/ui/skeleton'
+import { Suspense } from 'react'
+import ArticleTable from './_components/ArticleTable'
 
-import { Button } from '@/components/ui/button'
-import { adminFetcherWithAuth } from '@/lib/utils'
-import { useState } from 'react'
-
-export const dynamic = 'force-dynamic'
-
-export default function Page() {
-  const [loading, setLoading] = useState(false)
-  const [submitted, setSubmitted] = useState(false)
-  const title = ''
-  const content = ''
-  const category = ''
-  const submit = async () => {
-    setLoading(true)
-    const res = await adminFetcherWithAuth.post('article', {
-      json: {
-        title,
-        content,
-        category
-      },
-      next: {
-        revalidate: 0
-      }
-    })
-    if (res.ok) setSubmitted(true)
-    setLoading(false)
-  }
-
+export default function Article() {
   return (
     <div>
-      <Button
-        className="h-7 shrink-0 rounded-md px-2"
-        disabled={loading}
-        onClick={submit}
-      ></Button>
-      <input title={title} />
-      <input content={content} />
-      {submitted}
+      <Suspense
+        fallback={
+          <>
+            <div className="mt-4 flex">
+              <span className="w-2/4 md:w-4/6">
+                <Skeleton className="h-6 w-20" />
+              </span>
+              <span className="w-1/4 md:w-1/6">
+                <Skeleton className="mx-auto h-6 w-20" />
+              </span>
+              <span className="w-1/4 md:w-1/6">
+                <Skeleton className="mx-auto h-6 w-20" />
+              </span>
+            </div>
+            {[...Array(5)].map((_, i) => (
+              <Skeleton key={i} className="my-2 flex h-12 w-full rounded-xl" />
+            ))}
+          </>
+        }
+      >
+        <ArticleTable search={''} />
+      </Suspense>
     </div>
   )
 }

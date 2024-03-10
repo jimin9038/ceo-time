@@ -23,4 +23,7 @@ export class CreateArticleDto {
 
   @IsString()
   articleCategory: string
+
+  @IsString()
+  image: string
 }

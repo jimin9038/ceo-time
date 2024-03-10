@@ -42,7 +42,8 @@
     "pino-pretty": "^10.3.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1",
-    "sql-formatter": "^15.2.0"
+    "sql-formatter": "^15.2.0",
+    "multer": "1.4.5-lts.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.2.1",
@@ -51,6 +52,7 @@
     "@types/cache-manager": "^4.0.6",
     "@types/express": "^4.17.17",
     "@types/jest": "^29.5.2",
+    "@types/multer": "^1.4.11",
     "@types/node": "^20.10.5",
     "@types/passport-jwt": "^4.0.1",
     "@types/passport-local": "^1.0.38",

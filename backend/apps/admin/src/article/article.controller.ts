@@ -2,7 +2,6 @@ import {
   Controller,
   DefaultValuePipe,
   ParseArrayPipe,
-  ParseBoolPipe,
   ParseIntPipe,
   Query,
   Injectable,
@@ -15,14 +14,17 @@ import {
   NotFoundException,
   Post,
   Body,
-  Req
+  Req,
+  UseInterceptors,
+  UploadedFile,
+  Res
 } from '@nestjs/common'
+import { FileInterceptor } from '@nestjs/platform-express'
 import { Prisma } from '@prisma/client'
-import {
-  AuthNotNeededIfOpenSpace,
-  AuthenticatedRequest,
-  UseRolesGuard
-} from '@libs/auth'
+import { Request, Response } from 'express'
+import { diskStorage } from 'multer'
+import { extname } from 'path'
+import { AuthNotNeededIfOpenSpace, AuthenticatedRequest } from '@libs/auth'
 import { ArticleService } from './article.service'
 import { CreateArticleDto } from './dto/create-article.dto'
 
@@ -56,17 +58,14 @@ export class ArticleController {
       new ParseArrayPipe({ items: ParseIntPipe })
     )
     category: Array<number>,
-    @Query('published', new DefaultValuePipe(true), ParseBoolPipe)
-    published: boolean,
     @Query('cursor', ParseIntPipe) cursor: number | null,
     @Query('take', new DefaultValuePipe(10), ParseIntPipe) take: number
   ) {
     try {
       return await this.articleService.getArticles({
-        category,
-        published,
         cursor,
-        take
+        take,
+        category: []
       })
     } catch (error) {
       this.logger.error(error)
@@ -104,6 +103,7 @@ export class ArticleController {
       throw new InternalServerErrorException()
     }
   }
+
   @AuthNotNeededIfOpenSpace()
   @Post()
   async createArticle(
@@ -111,5 +111,40 @@ export class ArticleController {
     @Body() createArticleDto: CreateArticleDto
   ) {
     await this.articleService.createArticle(createArticleDto)
+  }
+}
+
+@AuthNotNeededIfOpenSpace()
+@Controller('uploads')
+export class UploadController {
+  @Post()
+  @UseInterceptors(
+    FileInterceptor('image', {
+      storage: diskStorage({
+        destination: './uploads',
+        filename(_, file, callback): void {
+          const randomName = Array(32)
+            .fill(null)
+            .map(() => Math.round(Math.random() * 16).toString(16))
+            .join('')
+          return callback(null, `${randomName}${extname(file.originalname)}`)
+        }
+      })
+    })
+  )
+  uploadFile(@UploadedFile() file: Express.Multer.File) {
+    return {
+      url: `/uploads/${file.filename}`
+    }
+  }
+
+  @Get('/:filename')
+  async getImage(@Req() req: Request, @Res() res: Response) {
+    const filename = req.file.filename // 이미지 파일명
+    const imageUrl = `http://localhost:5000/api/uploads/${filename}` // 이미지 url
+
+    // 이미지 url을 res.locals 객체에 저장
+    res.locals.imageUrl = imageUrl
+    return res
   }
 }
