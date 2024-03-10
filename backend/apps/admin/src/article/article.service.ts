@@ -51,12 +51,13 @@ export class ArticleService {
   @AuthNotNeededIfOpenSpace()
   async createArticle(createArticleDto: CreateArticleDto) {
     // user -> author
-    const { title, content, published } = createArticleDto
+    const { title, content, published, image } = createArticleDto
     const article = await this.prisma.article.create({
       data: {
         title,
         content,
-        published
+        published,
+        image
       }
     })
 

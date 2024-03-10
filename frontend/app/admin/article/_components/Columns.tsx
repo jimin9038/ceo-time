@@ -8,7 +8,7 @@ import { PiPushPinFill } from 'react-icons/pi'
 
 export const columns: ColumnDef<Notice>[] = [
   {
-    header: 'Title',
+    header: '제목',
     accessorKey: 'title',
     cell: ({ row }) => {
       return (
@@ -31,13 +31,23 @@ export const columns: ColumnDef<Notice>[] = [
     }
   },
   {
-    header: 'Writer',
+    header: '글쓴이',
     accessorKey: 'createdBy',
     cell: ({ row }) => row.original.createdBy
   },
   {
-    header: 'Date',
+    header: '공개',
+    accessorKey: 'published',
+    cell: ({ row }) => (row.original.published ? '공개' : '비공개')
+  },
+  {
+    header: '생성 날짜',
     accessorKey: 'createTime',
     cell: ({ row }) => dayjs(row.original.createTime).format('YYYY-MM-DD')
+  },
+  {
+    header: '이미지 URL',
+    accessorKey: 'image',
+    cell: ({ row }) => row.original.image
   }
 ]

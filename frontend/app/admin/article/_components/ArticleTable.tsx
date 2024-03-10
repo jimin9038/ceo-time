@@ -20,17 +20,17 @@ interface Article {
 }
 // eslint-disable-next-line @next/next/no-async-client-component
 export default async function ArticleTable({ search }: Props) {
-  const fixedArticles: Article[] =
-    search !== ''
-      ? []
-      : await adminFetcherWithAuth
-          .get('article', {
-            searchParams: {
-              fixed: 'true',
-              take: '10'
-            }
-          })
-          .json()
+  // const fixedArticles: Article[] =
+  //   search !== ''
+  //     ? []
+  //     : await adminFetcherWithAuth
+  //         .get('article', {
+  //           searchParams: {
+  //             fixed: 'true',
+  //             take: '10'
+  //           }
+  //         })
+  //         .json()
 
   const articles: Article[] = await adminFetcherWithAuth
     .get('article', {
@@ -38,7 +38,7 @@ export default async function ArticleTable({ search }: Props) {
         search: '',
         take: '10',
         category: '[]',
-        cursor: '5'
+        cursor: '10'
       }
     })
     .json()
