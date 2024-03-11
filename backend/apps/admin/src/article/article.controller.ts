@@ -17,13 +17,14 @@ import {
   Req,
   UseInterceptors,
   UploadedFile,
-  Res
+  Res,
+  StreamableFile
 } from '@nestjs/common'
 import { FileInterceptor } from '@nestjs/platform-express'
 import { Prisma } from '@prisma/client'
-import { Request, Response } from 'express'
 import { diskStorage } from 'multer'
-import { extname } from 'path'
+import { createReadStream } from 'node:fs'
+import { extname, join } from 'node:path'
 import { AuthNotNeededIfOpenSpace, AuthenticatedRequest } from '@libs/auth'
 import { ArticleService } from './article.service'
 import { CreateArticleDto } from './dto/create-article.dto'
@@ -138,13 +139,8 @@ export class UploadController {
     }
   }
 
-  @Get('/:filename')
-  async getImage(@Req() req: Request, @Res() res: Response) {
-    const filename = req.file.filename // 이미지 파일명
-    const imageUrl = `http://localhost:5000/api/uploads/${filename}` // 이미지 url
-
-    // 이미지 url을 res.locals 객체에 저장
-    res.locals.imageUrl = imageUrl
-    return res
+  @Get('/:url')
+  getImage(@Param('url', ParseIntPipe) url: string, @Res() res: Response) {
+    res.sendFile(url, { root: join(__dirname, 'uploads') })
   }
 }

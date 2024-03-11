@@ -1,5 +1,3 @@
-'use client'
-
 import DataTable from '@/components/DataTable'
 import { adminFetcherWithAuth } from '@/lib/utils'
 import { columns } from './Columns'
