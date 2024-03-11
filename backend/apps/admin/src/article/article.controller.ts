@@ -16,15 +16,10 @@ import {
   Body,
   Req,
   UseInterceptors,
-  UploadedFile,
-  Res,
-  StreamableFile
+  UploadedFile
 } from '@nestjs/common'
 import { FileInterceptor } from '@nestjs/platform-express'
 import { Prisma } from '@prisma/client'
-import { diskStorage } from 'multer'
-import { createReadStream } from 'node:fs'
-import { extname, join } from 'node:path'
 import { AuthNotNeededIfOpenSpace, AuthenticatedRequest } from '@libs/auth'
 import { ArticleService } from './article.service'
 import { CreateArticleDto } from './dto/create-article.dto'
@@ -116,31 +111,16 @@ export class ArticleController {
 }
 
 @AuthNotNeededIfOpenSpace()
-@Controller('uploads')
-export class UploadController {
-  @Post()
-  @UseInterceptors(
-    FileInterceptor('image', {
-      storage: diskStorage({
-        destination: './uploads',
-        filename(_, file, callback): void {
-          const randomName = Array(32)
-            .fill(null)
-            .map(() => Math.round(Math.random() * 16).toString(16))
-            .join('')
-          return callback(null, `${randomName}${extname(file.originalname)}`)
-        }
-      })
-    })
-  )
-  uploadFile(@UploadedFile() file: Express.Multer.File) {
-    return {
-      url: `/uploads/${file.filename}`
-    }
-  }
+@Controller('s3')
+export class S3StorageController {
+  constructor() {}
 
-  @Get('/:url')
-  getImage(@Param('url', ParseIntPipe) url: string, @Res() res: Response) {
-    res.sendFile(url, { root: join(__dirname, 'uploads') })
+  @Post('/upload')
+  @UseInterceptors(FileInterceptor('file'))
+  uploadFile(
+    @UploadedFile()
+    file: Express.Multer.File
+  ) {
+    return file
   }
 }
