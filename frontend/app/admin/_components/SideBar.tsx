@@ -5,7 +5,7 @@ import type { Route } from 'next'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import type { IconType } from 'react-icons'
-import { FaChartBar, FaPen } from 'react-icons/fa6'
+import { FaChartBar, FaPen, FaBell } from 'react-icons/fa6'
 
 export default function Page() {
   const pathname = usePathname()
@@ -13,8 +13,8 @@ export default function Page() {
   const navItems: { name: string; path: Route; icon: IconType }[] = [
     { name: 'Dashboard', path: '/admin', icon: FaChartBar },
     { name: 'Article', path: '/admin/article', icon: FaPen },
-    { name: 'Add article', path: '/admin/article/add', icon: FaPen }
-    // { name: 'Notice', path: '/admin/notice', icon: FaBell },
+    { name: 'Add article', path: '/admin/article/add', icon: FaPen },
+    { name: 'Banner', path: '/admin/banner', icon: FaBell }
     // { name: 'Problem', path: '/admin/problem', icon: FaPen },
     // { name: 'Contest', path: '/admin/contest', icon: FaTrophy }
   ]

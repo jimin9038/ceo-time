@@ -1,6 +1,5 @@
 'use client'
 
-import { cn } from '@/lib/utils'
 import type { ColumnDef } from '@tanstack/react-table'
 import dayjs from 'dayjs'
 
@@ -18,25 +17,26 @@ interface Article {
 
 export const columns: ColumnDef<Article>[] = [
   {
+    header: 'ID',
+    accessorKey: 'id',
+    cell: ({ row }) => {
+      return (
+        <p className="overflow-hidden text-ellipsis whitespace-nowrap text-left text-sm md:text-base">{`${row.original.id}`}</p>
+      )
+    }
+  },
+  {
     header: '제목',
     accessorKey: 'title',
     cell: ({ row }) => {
       return (
-        <div className="flex items-center justify-start gap-3 md:gap-4">
-          <span
-            className={cn(
-              'overflow-hidden text-ellipsis whitespace-nowrap text-sm md:text-base'
-            )}
-          >
-            {row.original.title}
-          </span>
-        </div>
+        <p className="overflow-hidden text-ellipsis whitespace-nowrap text-left text-sm md:text-base">{`${row.original.title}`}</p>
       )
     }
   },
   {
     header: '글쓴이',
-    accessorKey: 'createdBy',
+    accessorKey: 'author',
     cell: ({ row }) => row.original.author
   },
   {

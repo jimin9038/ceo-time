@@ -44,9 +44,12 @@ export default function ArticleTable() {
       data={currentPageData}
       columns={columns}
       headerStyle={{
-        title: 'text-left w-2/4 md:w-4/6',
-        createdBy: 'w-1/4 md:w-1/6',
-        createTime: 'w-1/4 md:w-1/6'
+        id: 'w-1/6 md:w-1/6',
+        title: 'text-left w-1/3 md:w-1/3',
+        author: 'w-1/6 md:w-1/6',
+        published: 'w-1/6 md:w-1/6',
+        createTime: 'w-1/6 md:w-1/6',
+        image: 'w-1/6 md:w-1/6'
       }}
       linked
     />

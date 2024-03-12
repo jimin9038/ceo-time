@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common'
-import { AuthNotNeededIfOpenSpace } from '@libs/auth'
 import { PrismaService } from '@libs/prisma'
-import { CreateArticleDto } from './dto/create-article.dto'
+import type { CreateArticleDto } from './dto/create-article.dto'
 
 @Injectable()
 export class ArticleService {
@@ -46,7 +45,6 @@ export class ArticleService {
     return articles
   }
 
-  @AuthNotNeededIfOpenSpace()
   async createArticle(createArticleDto: CreateArticleDto) {
     // user -> author
     const { title, content, published, image } = createArticleDto

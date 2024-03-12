@@ -85,23 +85,7 @@ export class ArticleController {
       throw new InternalServerErrorException()
     }
   }
-  @Get(':ids')
-  async getArticleByIDs(@Param('id', ParseIntPipe) id: number) {
-    try {
-      return await this.articleService.getArticleByID(id)
-    } catch (error) {
-      if (
-        error instanceof Prisma.PrismaClientKnownRequestError &&
-        error.name === 'NotFoundError'
-      ) {
-        throw new NotFoundException(error.message)
-      }
-      this.logger.error(error)
-      throw new InternalServerErrorException()
-    }
-  }
 
-  @AuthNotNeededIfOpenSpace()
   @Post()
   async createArticle(
     @Req() req: AuthenticatedRequest,

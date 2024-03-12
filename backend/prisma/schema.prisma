@@ -37,6 +37,7 @@ model Article {
   updatedAt       DateTime          @updatedAt
   ArticleCategory ArticleCategory[]
   image           String            @default("")
+  mainId          Int               @default(0)
 }
 
 model Category {
@@ -54,4 +55,10 @@ model ArticleCategory {
   categoryId Int
 
   @@id([articleId, categoryId])
+}
+
+model Banner {
+  id          Int      @id @default(autoincrement())
+  mainId       Int
+  bannerId     Int
 }
