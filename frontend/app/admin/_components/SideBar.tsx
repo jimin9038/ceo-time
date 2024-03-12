@@ -5,7 +5,7 @@ import type { Route } from 'next'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import type { IconType } from 'react-icons'
-import { FaChartBar, FaUser, FaBell, FaPen, FaTrophy } from 'react-icons/fa6'
+import { FaChartBar, FaPen } from 'react-icons/fa6'
 
 export default function Page() {
   const pathname = usePathname()

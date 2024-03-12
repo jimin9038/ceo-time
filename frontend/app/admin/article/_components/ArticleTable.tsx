@@ -2,9 +2,9 @@ import DataTable from '@/components/DataTable'
 import { adminFetcherWithAuth } from '@/lib/utils'
 import { columns } from './Columns'
 
-interface Props {
-  search: string
-}
+// interface Props {
+//   search: string
+// }
 
 interface Article {
   id: number
@@ -15,9 +15,10 @@ interface Article {
   createdAt: string
   updatedAt: string
   ArticleCategory: string[]
+  image: string
 }
 // eslint-disable-next-line @next/next/no-async-client-component
-export default async function ArticleTable({ search }: Props) {
+export default async function ArticleTable() {
   // const fixedArticles: Article[] =
   //   search !== ''
   //     ? []
