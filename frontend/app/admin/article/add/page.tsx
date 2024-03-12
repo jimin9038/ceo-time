@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button'
 import { adminFetcherWithAuth } from '@/lib/utils'
 import Image from 'next/image'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { useRef } from 'react'
 
 export default function PostArticle() {
@@ -26,7 +26,7 @@ export default function PostArticle() {
   interface ImageRes {
     url: string
   }
-  const handleSubmit = async (event: Event) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
     if (
       imgRef.current &&
@@ -58,11 +58,10 @@ export default function PostArticle() {
           revalidate: 0
         }
       })
-      console.log(res)
       // if (res.ok) redirect('/admin/article')
       setLoading(false)
+      console.log(res)
     }
-    console.log('efwef')
   }
 
   return (

@@ -25,7 +25,7 @@ export default function Article() {
           </>
         }
       >
-        <ArticleTable search={''} />
+        <ArticleTable />
       </Suspense>
     </div>
   )
