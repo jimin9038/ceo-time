@@ -61,7 +61,7 @@ export class ArticleController {
         take
       })
     } catch (error) {
-      this.logger.error(error) 
+      this.logger.error(error)
       throw new InternalServerErrorException()
     }
   }
