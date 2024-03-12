@@ -13,6 +13,7 @@ interface Article {
   updatedAt: string
   ArticleCategory: string[]
   image: string
+  mainId: number
 }
 
 export const columns: ColumnDef<Article>[] = [
@@ -48,6 +49,11 @@ export const columns: ColumnDef<Article>[] = [
     header: '생성 날짜',
     accessorKey: 'createTime',
     cell: ({ row }) => dayjs(row.original.createdAt).format('YYYY-MM-DD')
+  },
+  {
+    header: '메인 ID',
+    accessorKey: 'mainId',
+    cell: ({ row }) => row.original.mainId
   },
   {
     header: '이미지 URL',

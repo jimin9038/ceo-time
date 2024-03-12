@@ -19,6 +19,7 @@ interface Article {
   updatedAt: string
   ArticleCategory: string[]
   image: string
+  mainId: number
 }
 
 export default function ArticleTable() {
@@ -44,12 +45,13 @@ export default function ArticleTable() {
       data={currentPageData}
       columns={columns}
       headerStyle={{
-        id: 'w-1/6 md:w-1/6',
-        title: 'text-left w-1/3 md:w-1/3',
-        author: 'w-1/6 md:w-1/6',
-        published: 'w-1/6 md:w-1/6',
-        createTime: 'w-1/6 md:w-1/6',
-        image: 'w-1/6 md:w-1/6'
+        id: 'w-1/7',
+        title: 'text-left w-2/7 md:w-2/7',
+        author: 'w-1/7',
+        published: 'w-1/7',
+        createTime: 'w-1/7',
+        image: 'w-1/7',
+        mainId: 'w-1/7'
       }}
       linked
     />
