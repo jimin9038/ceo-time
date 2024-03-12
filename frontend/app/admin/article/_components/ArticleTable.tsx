@@ -1,5 +1,8 @@
+'use client'
+
 import DataTable from '@/components/DataTable'
 import { adminFetcherWithAuth } from '@/lib/utils'
+import { useState, useEffect } from 'react'
 import { columns } from './Columns'
 
 // interface Props {
@@ -17,30 +20,23 @@ interface Article {
   ArticleCategory: string[]
   image: string
 }
-// eslint-disable-next-line @next/next/no-async-client-component
-export default async function ArticleTable() {
-  // const fixedArticles: Article[] =
-  //   search !== ''
-  //     ? []
-  //     : await adminFetcherWithAuth
-  //         .get('article', {
-  //           searchParams: {
-  //             fixed: 'true',
-  //             take: '10'
-  //           }
-  //         })
-  //         .json()
 
-  const articles: Article[] = await adminFetcherWithAuth
-    .get('article', {
-      searchParams: {
-        search: '',
-        take: '10',
-        category: '[]',
-        cursor: '10'
-      }
-    })
-    .json()
+export default function ArticleTable() {
+  const [articles, setArticles] = useState([] as Article[])
+  async function getArticle() {
+    const res: Article[] = await adminFetcherWithAuth
+      .get('article', {
+        searchParams: {
+          take: '200',
+          category: '[]'
+        }
+      })
+      .json()
+    return setArticles(res)
+  }
+  useEffect(() => {
+    getArticle()
+  }, [])
   const currentPageData = articles
 
   return (

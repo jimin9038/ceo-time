@@ -1,6 +1,4 @@
 // import { cn } from '@/lib/utils'
-import HeaderAuthPanel from '@/components/auth/HeaderAuthPanel'
-import { auth } from '@/lib/auth'
 import Logo from '@/public/logo.png'
 import type { Route } from 'next'
 import Image from 'next/image'
@@ -11,7 +9,6 @@ import NavLink from './NavLink'
 // import { Button } from './button'
 
 export default async function Header() {
-  const session = await auth()
   return (
     <header className="border-b-gray grid h-16 w-full max-w-6xl place-items-center border-b bg-white">
       <div
@@ -37,7 +34,6 @@ export default async function Header() {
             <NavLink href={'/articles/life' as Route} text="LIFE" />
           </nav>
         </div>
-        <HeaderAuthPanel session={session} />
       </div>
     </header>
   )

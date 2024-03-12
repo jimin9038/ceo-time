@@ -54,7 +54,8 @@ export class ArticleController {
       new ParseArrayPipe({ items: ParseIntPipe })
     )
     category: Array<number>,
-    @Query('cursor', ParseIntPipe) cursor: number | null,
+    @Query('cursor', CursorValidationPipe)
+    cursor: number | null,
     @Query('take', new DefaultValuePipe(10), ParseIntPipe) take: number
   ) {
     try {
