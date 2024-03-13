@@ -53,7 +53,6 @@ export default function ArticleTable() {
         image: 'w-1/7',
         mainId: 'w-1/7'
       }}
-      linked
     />
   )
 }

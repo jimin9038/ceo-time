@@ -16,7 +16,8 @@ import {
   Body,
   Req,
   UseInterceptors,
-  UploadedFile
+  UploadedFile,
+  Put
 } from '@nestjs/common'
 import { FileInterceptor } from '@nestjs/platform-express'
 import { Prisma } from '@prisma/client'
@@ -90,6 +91,14 @@ export class ArticleController {
   async createArticle(
     @Req() req: AuthenticatedRequest,
     @Body() createArticleDto: CreateArticleDto
+  ) {
+    await this.articleService.createArticle(createArticleDto)
+  }
+
+  @Put()
+  async changeArticle(
+    @Req() req: AuthenticatedRequest,
+    @Body() changeArticleDto: ChangeArticleDto
   ) {
     await this.articleService.createArticle(createArticleDto)
   }
