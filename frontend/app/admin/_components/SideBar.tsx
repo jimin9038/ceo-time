@@ -14,8 +14,8 @@ export default function Page() {
     { name: 'Dashboard', path: '/admin', icon: FaChartBar },
     { name: 'Article', path: '/admin/article', icon: FaPen },
     { name: 'Add article', path: '/admin/article/add', icon: FaPen },
-    { name: 'Banner', path: '/admin/banner', icon: FaBell }
-    // { name: 'Problem', path: '/admin/problem', icon: FaPen },
+    { name: 'Banner', path: '/admin/banner', icon: FaBell },
+    { name: 'Add Banner', path: '/admin/banner/add', icon: FaPen }
     // { name: 'Contest', path: '/admin/contest', icon: FaTrophy }
   ]
 
