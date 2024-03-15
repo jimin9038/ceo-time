@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common'
 import { PrismaService } from '@libs/prisma'
+import type { ChangeArticleDto } from './dto/change-article.dto'
 import type { CreateArticleDto } from './dto/create-article.dto'
 
 @Injectable()
@@ -54,6 +55,35 @@ export class ArticleService {
         content,
         published,
         image
+      }
+    })
+
+    return article
+  }
+
+  async changeArticle(changeArticleDto: ChangeArticleDto) {
+    // user -> author
+    const { title, content, published, image, id, mainId } = changeArticleDto
+    const article = await this.prisma.article.update({
+      where: {
+        id
+      },
+      data: {
+        title,
+        content,
+        published,
+        image,
+        mainId
+      }
+    })
+
+    return article
+  }
+
+  async deleteArticle(id: number) {
+    const article = await this.prisma.article.delete({
+      where: {
+        id
       }
     })
 

@@ -17,12 +17,14 @@ import {
   Req,
   UseInterceptors,
   UploadedFile,
-  Put
+  Put,
+  Delete
 } from '@nestjs/common'
 import { FileInterceptor } from '@nestjs/platform-express'
 import { Prisma } from '@prisma/client'
 import { AuthNotNeededIfOpenSpace, AuthenticatedRequest } from '@libs/auth'
 import { ArticleService } from './article.service'
+import { ChangeArticleDto } from './dto/change-article.dto'
 import { CreateArticleDto } from './dto/create-article.dto'
 
 @Injectable()
@@ -100,7 +102,23 @@ export class ArticleController {
     @Req() req: AuthenticatedRequest,
     @Body() changeArticleDto: ChangeArticleDto
   ) {
-    await this.articleService.createArticle(createArticleDto)
+    await this.articleService.changeArticle(changeArticleDto)
+  }
+
+  @Delete(':id')
+  async deleteArticle(@Param('id', ParseIntPipe) id: number) {
+    try {
+      await this.articleService.deleteArticle(id)
+    } catch (error) {
+      if (
+        error instanceof Prisma.PrismaClientKnownRequestError &&
+        error.name === 'NotFoundError'
+      ) {
+        throw new NotFoundException(error.message)
+      }
+      this.logger.error(error)
+      throw new InternalServerErrorException()
+    }
   }
 }
 
