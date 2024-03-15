@@ -3,10 +3,13 @@
 import { Button } from '@/components/ui/button'
 import { adminFetcherWithAuth } from '@/lib/utils'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 import { useRef } from 'react'
 
 export default function PostArticle() {
+  const router = useRouter()
+
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [category, setCategory] = useState('')
@@ -24,7 +27,7 @@ export default function PostArticle() {
     }
   }
   interface ImageRes {
-    url: string
+    location: string
   }
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
@@ -34,9 +37,9 @@ export default function PostArticle() {
       imgRef.current.files.length > 0
     ) {
       const formData = new FormData()
-      formData.append('image', imgRef.current.files[0])
+      formData.append('file', imgRef.current.files[0])
       const imageRes: ImageRes = await adminFetcherWithAuth
-        .post('uploads', {
+        .post('s3/upload', {
           headers: {
             'Contest-Type': 'multipart/form-data'
           },
@@ -52,13 +55,13 @@ export default function PostArticle() {
           title,
           content,
           category,
-          image: imageRes.url
+          image: imageRes.location
         },
         next: {
           revalidate: 0
         }
       })
-      // if (res.ok) redirect('/admin/article')
+      if (res.ok) router.push('/admin/article')
       setLoading(false)
       console.log(res)
     }

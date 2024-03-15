@@ -102,7 +102,18 @@ export class ArticleController {
     @Req() req: AuthenticatedRequest,
     @Body() changeArticleDto: ChangeArticleDto
   ) {
-    await this.articleService.changeArticle(changeArticleDto)
+    try {
+      await this.articleService.changeArticle(changeArticleDto)
+    } catch (error) {
+      if (
+        error instanceof Prisma.PrismaClientKnownRequestError &&
+        error.name === 'NotFoundError'
+      ) {
+        throw new NotFoundException(error.message)
+      }
+      this.logger.error(error)
+      throw new InternalServerErrorException()
+    }
   }
 
   @Delete(':id')

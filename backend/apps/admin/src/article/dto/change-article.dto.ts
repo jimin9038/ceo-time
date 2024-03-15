@@ -25,5 +25,6 @@ export class ChangeArticleDto {
   id: number
 
   @IsOptional()
+  @IsNumber()
   mainId: number
 }

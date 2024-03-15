@@ -12,7 +12,7 @@ const handleChange = (
   adminFetcherWithAuth.put('article', {
     json: {
       id: articleId,
-      mainId: e.target.value
+      mainId: Number(e.target.value)
     }
   })
 }
@@ -75,6 +75,7 @@ export const columns: ColumnDef<Article>[] = [
             handleChange(event, row.original.id)
           }
         >
+          <option value={0}>No</option>
           <option value={1}>main</option>
           <option value={2}>sub1</option>
           <option value={3}>sub2</option>
