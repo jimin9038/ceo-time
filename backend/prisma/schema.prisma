@@ -60,5 +60,5 @@ model ArticleCategory {
 model Banner {
   id           Int     @id @default(autoincrement())
   mainId       Int     @default(0)
-  bannerId     Int
+  image       String
 }

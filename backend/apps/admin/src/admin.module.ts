@@ -8,6 +8,7 @@ import { PrismaModule } from '@libs/prisma'
 import { AdminController } from './admin.controller'
 import { AdminService } from './admin.service'
 import { ArticleModule } from './article/article.module'
+import { BannerModule } from './banner/banner.module'
 import { UserModule } from './user/user.module'
 
 @Module({
@@ -22,7 +23,8 @@ import { UserModule } from './user/user.module'
     RolesModule,
     PrismaModule,
     UserModule,
-    ArticleModule
+    ArticleModule,
+    BannerModule
   ],
   controllers: [AdminController],
   providers: [AdminService, { provide: APP_GUARD, useClass: JwtAuthGuard }]

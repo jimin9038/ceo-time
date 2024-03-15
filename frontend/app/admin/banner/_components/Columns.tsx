@@ -2,7 +2,6 @@
 
 import { adminFetcherWithAuth } from '@/lib/utils'
 import type { ColumnDef } from '@tanstack/react-table'
-import dayjs from 'dayjs'
 
 const handleChange = (
   e: React.ChangeEvent<HTMLSelectElement>,
@@ -56,6 +55,14 @@ export const columns: ColumnDef<Banner>[] = [
   {
     header: '이미지 URL',
     accessorKey: 'image',
-    cell: ({ row }) => row.original.image
+    cell: ({ row }) => (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={row.original.image}
+        width={200}
+        height={200}
+        alt="bannerimg"
+      ></img>
+    )
   }
 ]
