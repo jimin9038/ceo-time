@@ -26,7 +26,7 @@ export default async function ArticleDetail({
   const { id } = params
   const article: Article = await fetcher.get(`article/${id}`).json()
   return (
-    <div>
+    <div className="max-w-6xl">
       <div className="flex w-full max-w-6xl flex-col lg:flex-row">
         <div className="lg:w-4/5 lg:border-r-2 lg:border-slate-100">
           <h1 className="my-20 text-4xl font-bold">{article.title}</h1>

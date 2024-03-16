@@ -20,7 +20,7 @@ export default async function ArticleDetail({
     })
     .json()
   return (
-    <div className="relative">
+    <div className="relative max-w-6xl">
       {articles.map((article) => {
         return <ArticleList key={article.id} article={article}></ArticleList>
       })}
