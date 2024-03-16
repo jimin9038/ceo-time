@@ -11,7 +11,8 @@ import {
   Logger,
   InternalServerErrorException,
   Param,
-  NotFoundException
+  NotFoundException,
+  ParseBoolPipe
 } from '@nestjs/common'
 import { Prisma } from '@prisma/client'
 import { AuthNotNeededIfOpenSpace } from '@libs/auth'
@@ -49,13 +50,15 @@ export class ArticleController {
     category: Array<number>,
     @Query('cursor', CursorValidationPipe)
     cursor: number | null,
-    @Query('take', new DefaultValuePipe(10), ParseIntPipe) take: number
+    @Query('take', new DefaultValuePipe(10), ParseIntPipe) take: number,
+    @Query('main', new DefaultValuePipe(false), ParseBoolPipe) main: boolean
   ) {
     try {
       return await this.articleService.getArticles({
         cursor,
         take,
-        category: []
+        category: [],
+        main
       })
     } catch (error) {
       this.logger.error(error)

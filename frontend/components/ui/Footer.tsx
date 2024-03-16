@@ -9,7 +9,7 @@ export default function Footer() {
           src={Logo}
           fill={true}
           alt="Article image"
-          objectFit="cover"
+          className="object-cover"
         ></Image>
       </div>
       <div className="w-2/3">

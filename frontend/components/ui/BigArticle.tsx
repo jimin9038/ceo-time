@@ -1,17 +1,12 @@
-import Photo from '@/public/1.png'
+import type { Article } from '@/lib/types'
 import Image from 'next/image'
 
-interface Props {
-  title: string
-  content: string
-}
-
-export default function NoticeDetail({ title, content }: Props) {
+export default function BigArticle({ article }: { article: Article }) {
   return (
     <article className="relative w-full">
       <div className="relative flex w-full pb-96">
         <Image
-          src={Photo}
+          src={article.image}
           className="object-cover"
           fill={true}
           alt="Article image"
@@ -19,11 +14,11 @@ export default function NoticeDetail({ title, content }: Props) {
       </div>
       <div className="py-4">
         <h1 className="break-words text-3xl font-semibold lg:overflow-hidden lg:overflow-ellipsis lg:whitespace-nowrap">
-          {title}
+          {article.title}
         </h1>
       </div>
-      <div className="prose w-full max-w-full overflow-ellipsis py-4">
-        <h1> {content} </h1>
+      <div className="line-clamp-4 w-full max-w-full overflow-hidden overflow-ellipsis">
+        <h1> {article.content} </h1>
       </div>
     </article>
   )

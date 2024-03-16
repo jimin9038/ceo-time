@@ -12,6 +12,14 @@ const nextConfig = {
     NEXTAUTH_URL: process.env.VERCEL_URL
       ? `https://${process.env.VERCEL_URL}/next-auth/api/auth`
       : process.env.NEXTAUTH_URL
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'ceotimebucket.s3.ap-northeast-2.amazonaws.com'
+      }
+    ]
   }
 }
 

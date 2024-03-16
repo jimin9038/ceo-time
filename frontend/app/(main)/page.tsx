@@ -3,32 +3,49 @@ import BigBanner from '@/components/ui/BigBanner'
 import MiddleArticle from '@/components/ui/MiddleArticle'
 import SmallArticle from '@/components/ui/SmallArticle'
 import SmallBanner from '@/components/ui/SmallBanner'
+import type { Article } from '@/lib/types'
+import { fetcher } from '@/lib/utils'
 
-export default function Home() {
-  const title =
-    '“차세대 수출동력 강화 위해 지속적으로 현장의견에 귀 기울일 것” '
-  const content =
-    '윤진식 한국무역협회(KITA) 회장은 6일 경기도 판교 테크노밸리에 위치한 반도체 테스트 장비 전문 기업 엑시콘(대표 최명배)을 방문하며 취임 후 첫 무역업계 현장소통 행보에 나섰다.'
+export default async function Home() {
+  const mainArticles: Article[] = await fetcher
+    .get('article', {
+      searchParams: {
+        main: true
+      }
+    })
+    .json()
+  const mainArticle: Article = mainArticles.find((article) => {
+    return article.mainId === 1
+  })!
+
+  const subArticles: Article[] = mainArticles.filter((article) => {
+    return article.mainId > 1
+  })
+
+  const middleArticles = subArticles.map((subArticle) => {
+    return (
+      <MiddleArticle key={subArticle.id} article={subArticle}></MiddleArticle>
+    )
+  })
+
   return (
     <div>
       <section className="flex w-full max-w-6xl flex-col border-b-2 border-r-gray-500 lg:flex-row">
         <div className="h-30 mt-6 w-full border-r-2 border-r-gray-100 lg:w-2/3 lg:pr-6">
-          <BigArticle title={title} content={content}></BigArticle>
+          <BigArticle article={mainArticle}></BigArticle>
         </div>
         <div className="h-30 w-full overflow-hidden lg:ml-6 lg:w-1/3">
-          <MiddleArticle title={title} content={content}></MiddleArticle>
-          <MiddleArticle title={title} content={content}></MiddleArticle>
-          <MiddleArticle title={title} content={content}></MiddleArticle>
+          {middleArticles}
         </div>
       </section>
       <section className="flex w-full max-w-6xl flex-col border-b-2 border-r-gray-500 lg:flex-row">
         <div className="h-30 w-full border-r-2 border-r-gray-100 md:w-1/2 lg:w-1/3 lg:pr-6">
-          <SmallArticle title={title} content={content}></SmallArticle>
-          <SmallArticle title={title} content={content}></SmallArticle>
+          <SmallArticle article={mainArticle}></SmallArticle>
+          <SmallArticle article={mainArticle}></SmallArticle>
         </div>
         <div className="h-30 w-full border-r-2 border-r-gray-100 md:w-1/2 lg:w-1/3 lg:px-6">
-          <SmallArticle title={title} content={content}></SmallArticle>
-          <SmallArticle title={title} content={content}></SmallArticle>
+          <SmallArticle article={mainArticle}></SmallArticle>
+          <SmallArticle article={mainArticle}></SmallArticle>
         </div>
         <div className="h-30 w-full md:w-1/2 lg:w-1/3 lg:pl-6">
           <BigBanner></BigBanner>
@@ -47,22 +64,22 @@ export default function Home() {
       </section>
       <section className="flex w-full max-w-6xl flex-col border-b-2 border-r-gray-500 lg:flex-row">
         <div className="h-30 w-full md:w-1/2 lg:pr-6">
-          <MiddleArticle title={title} content={content}></MiddleArticle>
-          <MiddleArticle title={title} content={content}></MiddleArticle>
+          <MiddleArticle article={mainArticle}></MiddleArticle>
+          <MiddleArticle article={mainArticle}></MiddleArticle>
         </div>
         <div className="h-30 w-full md:w-1/2 lg:pl-6">
-          <MiddleArticle title={title} content={content}></MiddleArticle>
-          <MiddleArticle title={title} content={content}></MiddleArticle>
+          <MiddleArticle article={mainArticle}></MiddleArticle>
+          <MiddleArticle article={mainArticle}></MiddleArticle>
         </div>
       </section>
       <section className="flex w-full max-w-6xl flex-col border-b-2 border-r-gray-500 lg:flex-row">
         <div className="h-30 w-full md:w-1/2 lg:pr-6">
-          <MiddleArticle title={title} content={content}></MiddleArticle>
-          <MiddleArticle title={title} content={content}></MiddleArticle>
+          <MiddleArticle article={mainArticle}></MiddleArticle>
+          <MiddleArticle article={mainArticle}></MiddleArticle>
         </div>
         <div className="h-30 w-full md:w-1/2 lg:pl-6">
-          <MiddleArticle title={title} content={content}></MiddleArticle>
-          <MiddleArticle title={title} content={content}></MiddleArticle>
+          <MiddleArticle article={mainArticle}></MiddleArticle>
+          <MiddleArticle article={mainArticle}></MiddleArticle>
         </div>
       </section>
     </div>

@@ -17,11 +17,13 @@ export class ArticleService {
   async getArticles({
     take,
     cursor,
-    category
+    category,
+    main
   }: {
     take: number
     cursor: number | null
     category: Array<number>
+    main: boolean
   }) {
     const paginator = this.prisma.getPaginator(cursor)
 
@@ -37,7 +39,9 @@ export class ArticleService {
                 }
               }
             }
-          : undefined,
+          : main
+            ? { mainId: { gt: 0 } }
+            : undefined,
       orderBy: { id: 'desc' }
     })
 

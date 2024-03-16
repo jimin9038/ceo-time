@@ -1,26 +1,21 @@
-import Photo from '@/public/1.png'
+import type { Article } from '@/lib/types'
 import Image from 'next/image'
 
-interface Props {
-  title: string
-  content: string
-}
-
-export default function MiddleArticle({ title, content }: Props) {
+export default function MiddleArticle({ article }: { article: Article }) {
   return (
     <article className="relative w-full py-6">
       <div className="pb-3">
         <h1 className="overflow-hidden overflow-ellipsis whitespace-nowrap break-words text-2xl font-semibold lg:text-lg">
-          {title}
+          {article.title}
         </h1>
       </div>
       <div className="relative flex">
-        <div className="prose flex lg:max-h-20 lg:overflow-hidden lg:overflow-ellipsis lg:text-sm">
-          <h1> {content} </h1>
+        <div className="overflow-hidden overflow-ellipsis lg:text-sm ">
+          <h1 className="line-clamp-5"> {article.content} </h1>
         </div>
         <div className="relative ml-3 h-28 w-36 flex-shrink-0">
           <Image
-            src={Photo}
+            src={article.image}
             className="object-cover"
             fill={true}
             alt="Article image"
