@@ -9,6 +9,7 @@ import { AdminController } from './admin.controller'
 import { AdminService } from './admin.service'
 import { ArticleModule } from './article/article.module'
 import { BannerModule } from './banner/banner.module'
+import { CategoryModule } from './category/category.module'
 import { UserModule } from './user/user.module'
 
 @Module({
@@ -24,7 +25,8 @@ import { UserModule } from './user/user.module'
     PrismaModule,
     UserModule,
     ArticleModule,
-    BannerModule
+    BannerModule,
+    CategoryModule
   ],
   controllers: [AdminController],
   providers: [AdminService, { provide: APP_GUARD, useClass: JwtAuthGuard }]
