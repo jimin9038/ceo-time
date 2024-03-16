@@ -1,7 +1,5 @@
 import BigArticle from '@/components/ui/BigArticle'
 import BigBanner from '@/components/ui/BigBanner'
-import { Footer } from '@/components/ui/Footer'
-import Header from '@/components/ui/Header'
 import MiddleArticle from '@/components/ui/MiddleArticle'
 import SmallArticle from '@/components/ui/SmallArticle'
 import SmallBanner from '@/components/ui/SmallBanner'
@@ -12,8 +10,7 @@ export default function Home() {
   const content =
     '윤진식 한국무역협회(KITA) 회장은 6일 경기도 판교 테크노밸리에 위치한 반도체 테스트 장비 전문 기업 엑시콘(대표 최명배)을 방문하며 취임 후 첫 무역업계 현장소통 행보에 나섰다.'
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-3 ">
-      <Header></Header>
+    <div>
       <section className="flex w-full max-w-6xl flex-col border-b-2 border-r-gray-500 lg:flex-row">
         <div className="h-30 mt-6 w-full border-r-2 border-r-gray-100 lg:w-2/3 lg:pr-6">
           <BigArticle title={title} content={content}></BigArticle>
@@ -68,7 +65,6 @@ export default function Home() {
           <MiddleArticle title={title} content={content}></MiddleArticle>
         </div>
       </section>
-      <Footer></Footer>
-    </main>
+    </div>
   )
 }

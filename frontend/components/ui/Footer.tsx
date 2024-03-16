@@ -1,23 +1,28 @@
-// import Logo from '@/public/logo.png'
-// import Image from 'next/image'
+import Logo from '@/public/ceotime-logo-black.jpg'
+import Image from 'next/image'
 
 export default function Footer() {
   return (
     <footer className="mt-8 flex h-[20rem] w-full items-center justify-center bg-slate-900">
-      {/* <div className="w-1/3 h-24 relative">
+      <div className="relative ml-5 h-24 w-1/3">
         <Image
           src={Logo}
           fill={true}
-          alt='Article image'
-          objectFit='cover'
-        >
-        </Image>
-      </div> */}
-      <p className="text-center text-2xl font-bold text-white">
-        CEO TIME<br></br>
-        Since 2010<br></br>
-        The magazine for Leaders
-      </p>
+          alt="Article image"
+          objectFit="cover"
+        ></Image>
+      </div>
+      <div className="w-2/3">
+        <p className="mb-5 text-center text-lg text-white">
+          CEO TIME, The Magazine for Leaders
+        </p>
+        <p className="text-center text-sm text-white">
+          Email : jin9038 at daum.net
+          <br />
+          Website : www.ceotime.co.kr
+          <br />ⓒ CEO TIME. All rights reserved
+        </p>
+      </div>
     </footer>
   )
 }

@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common'
-import type { Prisma } from '@prisma/client'
 import { PrismaService } from '@libs/prisma'
 
 @Injectable()
@@ -15,31 +14,31 @@ export class ArticleService {
     })
   }
 
-  async getArticles(params: {
+  async getArticles({
+    take,
+    cursor,
+    category
+  }: {
     take: number
     cursor: number | null
-    orderBy?: Prisma.ArticleOrderByWithRelationInput
     category: Array<number>
-    published: boolean
   }) {
-    const { take, cursor, orderBy, category, published } = params
+    const paginator = this.prisma.getPaginator(cursor)
+
     const articles = await this.prisma.article.findMany({
-      skip: 1,
+      ...paginator,
       take,
-      cursor: cursor
-        ? {
-            id: cursor
-          }
-        : null,
-      orderBy,
-      where: {
-        published,
-        ArticleCategory: {
-          every: {
-            categoryId: { in: category }
-          }
-        }
-      }
+      where:
+        category.length > 0
+          ? {
+              ArticleCategory: {
+                every: {
+                  categoryId: { in: category }
+                }
+              }
+            }
+          : undefined,
+      orderBy: { id: 'desc' }
     })
 
     return articles

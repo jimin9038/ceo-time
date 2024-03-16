@@ -1,6 +1,7 @@
 'use client'
 
 import DataTable from '@/components/DataTable'
+import type { Article } from '@/lib/types'
 import { adminFetcherWithAuth } from '@/lib/utils'
 import { useState, useEffect } from 'react'
 import { columns } from './Columns'
@@ -8,19 +9,6 @@ import { columns } from './Columns'
 // interface Props {
 //   search: string
 // }
-
-interface Article {
-  id: number
-  title: string
-  content: string
-  published: boolean
-  author: string
-  createdAt: string
-  updatedAt: string
-  ArticleCategory: string[]
-  image: string
-  mainId: number
-}
 
 export default function ArticleTable() {
   const [articles, setArticles] = useState([] as Article[])

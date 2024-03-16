@@ -2,7 +2,6 @@ import {
   Controller,
   DefaultValuePipe,
   ParseArrayPipe,
-  ParseBoolPipe,
   ParseIntPipe,
   Query,
   Injectable,
@@ -32,14 +31,14 @@ export class CursorValidationPipe implements PipeTransform {
     throw new BadRequestException('Cursor must be a positive number')
   }
 }
-
+// @UseRolesGuard('Admin')
+@AuthNotNeededIfOpenSpace()
 @Controller('article')
 export class ArticleController {
   private readonly logger = new Logger(ArticleController.name)
 
   constructor(private readonly articleService: ArticleService) {}
 
-  @AuthNotNeededIfOpenSpace()
   @Get()
   async getArticles(
     @Query(
@@ -48,17 +47,15 @@ export class ArticleController {
       new ParseArrayPipe({ items: ParseIntPipe })
     )
     category: Array<number>,
-    @Query('published', new DefaultValuePipe(true), ParseBoolPipe)
-    published: boolean,
-    @Query('cursor', ParseIntPipe) cursor: number | null,
+    @Query('cursor', CursorValidationPipe)
+    cursor: number | null,
     @Query('take', new DefaultValuePipe(10), ParseIntPipe) take: number
   ) {
     try {
       return await this.articleService.getArticles({
-        category,
-        published,
         cursor,
-        take
+        take,
+        category: []
       })
     } catch (error) {
       this.logger.error(error)
@@ -66,7 +63,6 @@ export class ArticleController {
     }
   }
 
-  @AuthNotNeededIfOpenSpace()
   @Get(':id')
   async getArticleByID(@Param('id', ParseIntPipe) id: number) {
     try {

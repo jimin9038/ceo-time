@@ -17,14 +17,14 @@ export default function NoticeDetail({ title, content }: Props) {
           alt="Article image"
         ></Image>
       </div>
-      <p className="py-4">
+      <div className="py-4">
         <h1 className="break-words text-3xl font-semibold lg:overflow-hidden lg:overflow-ellipsis lg:whitespace-nowrap">
           {title}
         </h1>
-      </p>
-      <p className="prose w-full max-w-full overflow-ellipsis py-4">
+      </div>
+      <div className="prose w-full max-w-full overflow-ellipsis py-4">
         <h1> {content} </h1>
-      </p>
+      </div>
     </article>
   )
 }

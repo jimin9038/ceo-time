@@ -21,8 +21,7 @@ export default function BannerTable() {
     const res: Banner[] = await adminFetcherWithAuth
       .get('banner', {
         searchParams: {
-          take: '100',
-          category: '[]'
+          take: '100'
         }
       })
       .json()

@@ -44,10 +44,14 @@ export const columns: ColumnDef<Banner>[] = [
           }
         >
           <option value={0}>No</option>
-          <option value={1}>main</option>
+          <option value={1}>Big 1</option>
           <option value={2}>sub1</option>
           <option value={3}>sub2</option>
           <option value={4}>sub3</option>
+          <option value={5}>sub3</option>
+          <option value={6}>sub3</option>
+          <option value={7}>sub3</option>
+          <option value={8}>sub3</option>
         </select>
       )
     }
