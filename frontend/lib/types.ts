@@ -13,7 +13,8 @@ export interface Article {
   imageContent: string
 }
 
-export interface Category {
+export interface Banner {
   id: number
-  name: string
+  image: string
+  mainId: number
 }

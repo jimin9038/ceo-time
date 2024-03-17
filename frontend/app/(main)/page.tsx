@@ -3,9 +3,22 @@ import BigBanner from '@/components/ui/BigBanner'
 import MiddleArticle from '@/components/ui/MiddleArticle'
 import SmallArticle from '@/components/ui/SmallArticle'
 import SmallBanner from '@/components/ui/SmallBanner'
-import type { Article } from '@/lib/types'
-import { fetcher } from '@/lib/utils'
+import type { Article, Banner } from '@/lib/types'
+import { adminFetcher, fetcher } from '@/lib/utils'
 
+enum BannerMainId {
+  No,
+  Big1,
+  Big2,
+  Big3,
+  Big4,
+  Sub1,
+  Sub2,
+  Sub3,
+  Sub4,
+  Sub5,
+  Sub6
+}
 export default async function Home() {
   const mainArticles: Article[] = await fetcher
     .get('article', {
@@ -51,6 +64,77 @@ export default async function Home() {
       }
     })
     .json()
+
+  const Big1Banner: Banner = await fetcher
+    .get('banner/main', {
+      searchParams: {
+        mainId: BannerMainId.Big1
+      }
+    })
+    .json()
+  const Big2Banner: Banner = await fetcher
+    .get('banner/main', {
+      searchParams: {
+        mainId: BannerMainId.Big2
+      }
+    })
+    .json()
+  const Big3Banner: Banner = await fetcher
+    .get('banner/main', {
+      searchParams: {
+        mainId: BannerMainId.Big3
+      }
+    })
+    .json()
+  // const Big4Banner: Banner = await fetcher
+  //   .get('banner', {
+  //     searchParams: {
+  //       mainId: BannerMainId.Big4
+  //     }
+  //   })
+  //   .json()
+  const Sub1Banner: Banner = await fetcher
+    .get('banner/main', {
+      searchParams: {
+        mainId: BannerMainId.Sub1
+      }
+    })
+    .json()
+  const Sub2Banner: Banner = await fetcher
+    .get('banner/main', {
+      searchParams: {
+        mainId: BannerMainId.Sub2
+      }
+    })
+    .json()
+  const Sub3Banner: Banner = await fetcher
+    .get('banner/main', {
+      searchParams: {
+        mainId: BannerMainId.Sub3
+      }
+    })
+    .json()
+  const Sub4Banner: Banner = await fetcher
+    .get('banner/main', {
+      searchParams: {
+        mainId: BannerMainId.Sub4
+      }
+    })
+    .json()
+  const Sub5Banner: Banner = await fetcher
+    .get('banner/main', {
+      searchParams: {
+        mainId: BannerMainId.Sub5
+      }
+    })
+    .json()
+  // const Sub6Banner: Banner = await fetcher
+  //   .get('banner', {
+  //     searchParams: {
+  //       mainId: BannerMainId.Sub6
+  //     }
+  //   })
+  //   .json()
   return (
     <div>
       <section className="flex w-full max-w-6xl flex-col border-b-2 border-r-gray-500 lg:flex-row">
@@ -71,18 +155,18 @@ export default async function Home() {
           <SmallArticle article={secondSectionArticles[3]}></SmallArticle>
         </div>
         <div className="h-30 w-full md:w-1/2 lg:w-1/3 lg:pl-6">
-          <BigBanner></BigBanner>
+          <BigBanner banner={Big1Banner}></BigBanner>
         </div>
       </section>
       <section className="flex w-full max-w-6xl flex-col border-b-2 border-r-gray-500 lg:flex-row">
         <div className="h-30 w-full md:w-1/2 lg:w-1/3 lg:pr-6 ">
-          <SmallBanner></SmallBanner>
+          <SmallBanner banner={Sub1Banner}></SmallBanner>
         </div>
         <div className="h-30 w-full md:w-1/2 lg:w-1/3 lg:px-6">
-          <SmallBanner></SmallBanner>
+          <SmallBanner banner={Sub2Banner}></SmallBanner>
         </div>
         <div className="h-30 w-full md:w-1/2 lg:w-1/3 lg:pl-6">
-          <SmallBanner></SmallBanner>
+          <SmallBanner banner={Sub3Banner}></SmallBanner>
         </div>
       </section>
       <section className="flex w-full max-w-6xl flex-col border-b-2 border-r-gray-500 lg:flex-row">
@@ -103,6 +187,18 @@ export default async function Home() {
         <div className="h-30 w-full md:w-1/2 lg:pl-6">
           <MiddleArticle article={forthSectionArticles[2]}></MiddleArticle>
           <MiddleArticle article={forthSectionArticles[3]}></MiddleArticle>
+        </div>
+      </section>
+      <section className="flex w-full max-w-6xl flex-col border-b-2 border-r-gray-500 lg:flex-row">
+        <div className="h-30 w-full md:w-1/2 lg:w-1/3 lg:pr-6 ">
+          <BigBanner banner={Big2Banner}></BigBanner>
+        </div>
+        <div className="h-30 w-full md:w-1/2 lg:w-1/3 lg:px-6">
+          <BigBanner banner={Big3Banner}></BigBanner>
+        </div>
+        <div className="h-30 w-full md:w-1/2 lg:w-1/3 lg:pl-6">
+          <SmallBanner banner={Sub4Banner}></SmallBanner>
+          <SmallBanner banner={Sub5Banner}></SmallBanner>
         </div>
       </section>
     </div>

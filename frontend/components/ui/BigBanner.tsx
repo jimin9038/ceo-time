@@ -1,21 +1,16 @@
-import Photo from '@/public/lh.png'
+import type { Banner } from '@/lib/types'
 import Image from 'next/image'
 
-// interface Props {
-//   title: string
-//   content: string
-// }
-
-export default function SmallBanner() {
+export default function BigBanner({ banner }: { banner: Banner }) {
   return (
     <article className="relative w-full py-6">
       <div className="relative flex">
         <div className="relative h-80 w-full flex-shrink-0">
           <Image
-            src={Photo}
+            src={banner?.image}
             className="object-cover"
             fill={true}
-            alt="Article image"
+            alt="Banner image"
           ></Image>
         </div>
       </div>

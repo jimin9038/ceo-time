@@ -11,6 +11,7 @@ import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { ArticleModule } from './article/article.module'
 import { AuthModule } from './auth/auth.module'
+import { BannerModule } from './banner/banner.module'
 import { UserModule } from './user/user.module'
 
 @Module({
@@ -26,7 +27,8 @@ import { UserModule } from './user/user.module'
     UserModule,
     AuthModule,
     ArticleModule,
-    LoggerModule.forRoot(pinoLoggerModuleOption)
+    LoggerModule.forRoot(pinoLoggerModuleOption),
+    BannerModule
   ],
   controllers: [AppController],
   providers: [AppService, { provide: APP_GUARD, useClass: JwtAuthGuard }]

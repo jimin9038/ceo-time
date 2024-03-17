@@ -15,6 +15,14 @@ export class BannerService {
     })
   }
 
+  async getBannerByMainID(mainId: number) {
+    return await this.prisma.banner.findFirst({
+      where: {
+        mainId
+      }
+    })
+  }
+
   async getBanners({ take, cursor }: { take: number; cursor: number | null }) {
     const paginator = this.prisma.getPaginator(cursor)
 
