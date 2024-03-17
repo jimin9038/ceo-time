@@ -4,7 +4,7 @@ import MiddleArticle from '@/components/ui/MiddleArticle'
 import SmallArticle from '@/components/ui/SmallArticle'
 import SmallBanner from '@/components/ui/SmallBanner'
 import type { Article, Banner } from '@/lib/types'
-import { adminFetcher, fetcher } from '@/lib/utils'
+import { fetcher } from '@/lib/utils'
 
 enum BannerMainId {
   No,
