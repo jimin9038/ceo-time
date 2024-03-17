@@ -1,5 +1,6 @@
 'use client'
 
+import type { Article } from '@/lib/types'
 import { adminFetcherWithAuth } from '@/lib/utils'
 import type { ColumnDef } from '@tanstack/react-table'
 import dayjs from 'dayjs'
@@ -16,17 +17,18 @@ const handleChange = (
     }
   })
 }
-interface Article {
-  id: number
-  title: string
-  content: string
-  published: boolean
-  author: string
-  createdAt: string
-  updatedAt: string
-  ArticleCategory: string[]
-  image: string
-  mainId: number
+
+const handleChangeCategory = (
+  e: React.ChangeEvent<HTMLSelectElement>,
+  articleId: number
+) => {
+  e.preventDefault()
+  adminFetcherWithAuth.put('article', {
+    json: {
+      id: articleId,
+      category: Number(e.target.value)
+    }
+  })
 }
 
 export const columns: ColumnDef<Article>[] = [
@@ -80,6 +82,34 @@ export const columns: ColumnDef<Article>[] = [
           <option value={2}>sub1</option>
           <option value={3}>sub2</option>
           <option value={4}>sub3</option>
+        </select>
+      )
+    }
+  },
+  {
+    header: 'category',
+    accessorKey: 'category',
+    cell: ({ row }) => {
+      return (
+        <select
+          className="w-full rounded-md border border-gray-300 p-2 text-sm"
+          defaultValue={row.original.category}
+          onChange={(event: React.ChangeEvent<HTMLSelectElement>) =>
+            handleChangeCategory(event, row.original.id)
+          }
+        >
+          <option value={0}>No Category</option>
+          <option value={1}>CEO</option>
+          <option value={2}>C-LEVEL</option>
+          <option value={3}>VIEW</option>
+          <option value={4}>FOCUS</option>
+          <option value={5}>TIME</option>
+          <option value={6}>INNOVATION</option>
+          <option value={7}>MANAGEMENT</option>
+          <option value={8}>REVIEW</option>
+          <option value={9}>SPECIAL REPORT</option>
+          <option value={10}>VIVID</option>
+          <option value={11}>LIFE</option>
         </select>
       )
     }

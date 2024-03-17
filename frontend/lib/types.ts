@@ -7,8 +7,13 @@ export interface Article {
   author: string
   createdAt: string
   updatedAt: string
-  ArticleCategory: string[]
+  category: number
   image: string
   mainId: number
   imageContent: string
+}
+
+export interface Category {
+  id: number
+  name: string
 }

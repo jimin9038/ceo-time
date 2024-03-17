@@ -7,7 +7,7 @@ export default async function ArticleDetail({
   params
 }: {
   params: {
-    category: string
+    category: number
   }
 }) {
   const { category } = params

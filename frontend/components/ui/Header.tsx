@@ -17,20 +17,20 @@ export default async function Header() {
       >
         <div className="flex w-1/2 min-w-fit items-center justify-between gap-8 pr-20">
           <Link href="/">
-            <Image src={Logo} alt="코드당" width={180} className="min-w-40" />
+            <Image src={Logo} alt="CEO TIME" width={180} className="min-w-40" />
           </Link>
           <nav className="flex gap-5 whitespace-nowrap capitalize">
-            <NavLink href="/articles/ceo" text="CEO" />
-            <NavLink href="/articles/c-level" text="C-LEVEL" />
-            <NavLink href="/articles/view" text="VIEW" />
-            <NavLink href="/articles/focus" text="FOCUS" />
-            <NavLink href="/articles/time" text="TIME" />
-            <NavLink href="/articles/innovation" text="INNOVATION" />
-            <NavLink href="/articles/management" text="MANAGEMENT" />
-            <NavLink href="/articles/review" text="REVIEW" />
-            <NavLink href="/articles/special-report" text="SPECIAL REPORT" />
-            <NavLink href="/articles/vivid" text="VIVID" />
-            <NavLink href="/articles/life" text="LIFE" />
+            <NavLink href="/articles/1" text="CEO" />
+            <NavLink href="/articles/2" text="C-LEVEL" />
+            <NavLink href="/articles/3" text="VIEW" />
+            <NavLink href="/articles/4" text="FOCUS" />
+            <NavLink href="/articles/5" text="TIME" />
+            <NavLink href="/articles/6" text="INNOVATION" />
+            <NavLink href="/articles/7" text="MANAGEMENT" />
+            <NavLink href="/articles/8" text="REVIEW" />
+            <NavLink href="/articles/9" text="SPECIAL REPORT" />
+            <NavLink href="/articles/10" text="VIVID" />
+            <NavLink href="/articles/11" text="LIFE" />
           </nav>
         </div>
       </div>

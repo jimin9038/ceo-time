@@ -15,9 +15,7 @@ export default function Page() {
     { name: 'Article', path: '/admin/article', icon: FaPen },
     { name: 'Add article', path: '/admin/article/add', icon: FaPen },
     { name: 'Banner', path: '/admin/banner', icon: FaBell },
-    { name: 'Add Banner', path: '/admin/banner/add', icon: FaPen },
-    { name: 'Category', path: '/admin/category', icon: FaBell },
-    { name: 'Add Category', path: '/admin/category/add', icon: FaPen }
+    { name: 'Add Banner', path: '/admin/banner/add', icon: FaPen }
   ]
 
   return (

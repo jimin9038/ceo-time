@@ -35,26 +35,9 @@ model Article {
   authorId        Int?
   createdAt       DateTime          @default(now())
   updatedAt       DateTime          @updatedAt
-  ArticleCategory ArticleCategory[]
+  category        Int               @default(0)
   image           String            @default("")
   mainId          Int               @default(0)
-}
-
-model Category {
-  id              Int               @id @default(autoincrement())
-  name            String
-  createdAt       DateTime          @default(now())
-  updatedAt       DateTime          @updatedAt
-  ArticleCategory ArticleCategory[]
-}
-
-model ArticleCategory {
-  article    Article  @relation(fields: [articleId], references: [id])
-  articleId  Int
-  category   Category @relation(fields: [categoryId], references: [id])
-  categoryId Int
-
-  @@id([articleId, categoryId])
 }
 
 model Banner {

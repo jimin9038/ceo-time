@@ -28,6 +28,29 @@ export default async function Home() {
     )
   })
 
+  const secondSectionArticles: Article[] = await fetcher
+    .get('article', {
+      searchParams: {
+        category: 7
+      }
+    })
+    .json()
+
+  const thirdSectionArticles: Article[] = await fetcher
+    .get('article', {
+      searchParams: {
+        category: 2
+      }
+    })
+    .json()
+
+  const forthSectionArticles: Article[] = await fetcher
+    .get('article', {
+      searchParams: {
+        category: 10
+      }
+    })
+    .json()
   return (
     <div>
       <section className="flex w-full max-w-6xl flex-col border-b-2 border-r-gray-500 lg:flex-row">
@@ -40,12 +63,12 @@ export default async function Home() {
       </section>
       <section className="flex w-full max-w-6xl flex-col border-b-2 border-r-gray-500 lg:flex-row">
         <div className="h-30 w-full border-r-2 border-r-gray-100 md:w-1/2 lg:w-1/3 lg:pr-6">
-          <SmallArticle article={mainArticle}></SmallArticle>
-          <SmallArticle article={mainArticle}></SmallArticle>
+          <SmallArticle article={secondSectionArticles[0]}></SmallArticle>
+          <SmallArticle article={secondSectionArticles[1]}></SmallArticle>
         </div>
         <div className="h-30 w-full border-r-2 border-r-gray-100 md:w-1/2 lg:w-1/3 lg:px-6">
-          <SmallArticle article={mainArticle}></SmallArticle>
-          <SmallArticle article={mainArticle}></SmallArticle>
+          <SmallArticle article={secondSectionArticles[2]}></SmallArticle>
+          <SmallArticle article={secondSectionArticles[3]}></SmallArticle>
         </div>
         <div className="h-30 w-full md:w-1/2 lg:w-1/3 lg:pl-6">
           <BigBanner></BigBanner>
@@ -64,22 +87,22 @@ export default async function Home() {
       </section>
       <section className="flex w-full max-w-6xl flex-col border-b-2 border-r-gray-500 lg:flex-row">
         <div className="h-30 w-full md:w-1/2 lg:pr-6">
-          <MiddleArticle article={mainArticle}></MiddleArticle>
-          <MiddleArticle article={mainArticle}></MiddleArticle>
+          <MiddleArticle article={thirdSectionArticles[0]}></MiddleArticle>
+          <MiddleArticle article={thirdSectionArticles[1]}></MiddleArticle>
         </div>
         <div className="h-30 w-full md:w-1/2 lg:pl-6">
-          <MiddleArticle article={mainArticle}></MiddleArticle>
-          <MiddleArticle article={mainArticle}></MiddleArticle>
+          <MiddleArticle article={thirdSectionArticles[2]}></MiddleArticle>
+          <MiddleArticle article={thirdSectionArticles[3]}></MiddleArticle>
         </div>
       </section>
       <section className="flex w-full max-w-6xl flex-col border-b-2 border-r-gray-500 lg:flex-row">
         <div className="h-30 w-full md:w-1/2 lg:pr-6">
-          <MiddleArticle article={mainArticle}></MiddleArticle>
-          <MiddleArticle article={mainArticle}></MiddleArticle>
+          <MiddleArticle article={forthSectionArticles[0]}></MiddleArticle>
+          <MiddleArticle article={forthSectionArticles[1]}></MiddleArticle>
         </div>
         <div className="h-30 w-full md:w-1/2 lg:pl-6">
-          <MiddleArticle article={mainArticle}></MiddleArticle>
-          <MiddleArticle article={mainArticle}></MiddleArticle>
+          <MiddleArticle article={forthSectionArticles[2]}></MiddleArticle>
+          <MiddleArticle article={forthSectionArticles[3]}></MiddleArticle>
         </div>
       </section>
     </div>

@@ -17,7 +17,7 @@ export default function ArticleTable() {
       .get('article', {
         searchParams: {
           take: '200',
-          category: '[]'
+          category: '0'
         }
       })
       .json()
@@ -27,7 +27,6 @@ export default function ArticleTable() {
     getArticle()
   }, [])
   const currentPageData = articles
-
   return (
     <DataTable
       data={currentPageData}

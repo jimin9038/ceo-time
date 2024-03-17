@@ -23,23 +23,14 @@ export class ArticleService {
   }: {
     take: number
     cursor: number | null
-    category: Array<number>
+    category: number
   }) {
     const paginator = this.prisma.getPaginator(cursor)
 
     const articles = await this.prisma.article.findMany({
       ...paginator,
       take,
-      where:
-        category.length > 0
-          ? {
-              ArticleCategory: {
-                every: {
-                  categoryId: { in: category }
-                }
-              }
-            }
-          : undefined,
+      where: category ? { category } : undefined,
       orderBy: { id: 'desc' }
     })
 
@@ -63,7 +54,8 @@ export class ArticleService {
 
   async changeArticle(changeArticleDto: ChangeArticleDto) {
     // user -> author
-    const { title, content, published, image, id, mainId } = changeArticleDto
+    const { title, content, published, image, id, mainId, category } =
+      changeArticleDto
     const article = await this.prisma.article.update({
       where: {
         id
@@ -73,7 +65,8 @@ export class ArticleService {
         content,
         published,
         image,
-        mainId
+        mainId,
+        category
       }
     })
 

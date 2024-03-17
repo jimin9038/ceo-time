@@ -22,7 +22,7 @@ export class ArticleService {
   }: {
     take: number
     cursor: number | null
-    category: Array<number>
+    category: number
     main: boolean
   }) {
     const paginator = this.prisma.getPaginator(cursor)
@@ -30,18 +30,7 @@ export class ArticleService {
     const articles = await this.prisma.article.findMany({
       ...paginator,
       take,
-      where:
-        category.length > 0
-          ? {
-              ArticleCategory: {
-                every: {
-                  categoryId: { in: category }
-                }
-              }
-            }
-          : main
-            ? { mainId: { gt: 0 } }
-            : undefined,
+      where: main ? { mainId: { gt: 0 } } : category ? { category } : undefined,
       orderBy: { id: 'desc' }
     })
 

@@ -27,4 +27,8 @@ export class ChangeArticleDto {
   @IsOptional()
   @IsNumber()
   mainId: number
+
+  @IsOptional()
+  @IsNumber()
+  category: number
 }

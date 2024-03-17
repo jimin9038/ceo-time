@@ -1,7 +1,6 @@
 import {
   Controller,
   DefaultValuePipe,
-  ParseArrayPipe,
   ParseIntPipe,
   Query,
   Injectable,
@@ -51,12 +50,8 @@ export class ArticleController {
 
   @Get()
   async getArticles(
-    @Query(
-      'category',
-      new DefaultValuePipe([]),
-      new ParseArrayPipe({ items: ParseIntPipe })
-    )
-    category: Array<number>,
+    @Query('category', new DefaultValuePipe(0), ParseIntPipe)
+    category: number,
     @Query('cursor', CursorValidationPipe)
     cursor: number | null,
     @Query('take', new DefaultValuePipe(10), ParseIntPipe) take: number
@@ -65,7 +60,7 @@ export class ArticleController {
       return await this.articleService.getArticles({
         cursor,
         take,
-        category: []
+        category
       })
     } catch (error) {
       this.logger.error(error)

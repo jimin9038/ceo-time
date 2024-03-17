@@ -12,18 +12,11 @@ WORKDIR /app/backend
 RUN pnpx prisma generate
 
 WORKDIR /app
-RUN pnpm run -r build
+RUN pnpm run --filter=backend build
 RUN pnpm deploy --filter=backend --prod /prod/backend
-RUN pnpm deploy --filter=frontend --prod /prod/frontend
 
 FROM base AS backend
 COPY --from=builder /prod/backend /prod/backend
 WORKDIR /prod/backend
 EXPOSE 8000
-CMD ["pnpm", "start"]
-
-FROM base as frontend
-COPY --from=builder /prod/frontend /prod/frontend
-WORKDIR /prod/frontend
-EXPOSE 8001
 CMD ["pnpm", "start"]
