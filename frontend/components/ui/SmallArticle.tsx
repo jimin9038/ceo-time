@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export default function SmallArticle({ article }: { article: Article }) {
   return (
-    <Link href={`/article/${article?.id}`}>
+    <Link href={`/article/${article?.id ?? '0'}`}>
       <article className="relative w-full py-6">
         <div className="pb-3">
           <h1 className="h-14 overflow-hidden overflow-ellipsis break-words text-xl font-semibold lg:text-lg">

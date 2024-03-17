@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export default function BigArticle({ article }: { article: Article }) {
   return (
-    <Link href={`/article/${article?.id}`}>
+    <Link href={`/article/${article?.id ?? '0'}`}>
       <article className="relative w-full">
         <div className="relative flex w-full pb-96">
           <Image

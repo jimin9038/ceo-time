@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export default function MiddleArticle({ article }: { article: Article }) {
   return (
-    <Link href={`/article/${article?.id}`}>
+    <Link href={`/article/${article?.id ?? '0'}`}>
       <article className="relative w-full py-6">
         <div className="pb-3">
           <h1 className="overflow-hidden overflow-ellipsis whitespace-nowrap break-words text-2xl font-semibold lg:text-lg">
