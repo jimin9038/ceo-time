@@ -4,6 +4,7 @@ import type { Article } from '@/lib/types'
 import { adminFetcherWithAuth } from '@/lib/utils'
 import type { ColumnDef } from '@tanstack/react-table'
 import dayjs from 'dayjs'
+import Image from 'next/image'
 
 const handleChange = (
   e: React.ChangeEvent<HTMLSelectElement>,
@@ -117,6 +118,24 @@ export const columns: ColumnDef<Article>[] = [
   {
     header: '이미지 URL',
     accessorKey: 'image',
-    cell: ({ row }) => row.original.image
+    cell: ({ row }) => (
+      <Image src={row.original.image} width={200} height={200} alt="im"></Image>
+    )
+  },
+  {
+    header: '삭제',
+    accessorKey: 'delete',
+    cell: ({ row }) => {
+      return (
+        <button
+          onClick={() => {
+            adminFetcherWithAuth.delete(`article/${row.original.id}`)
+            window.location.reload()
+          }}
+        >
+          삭제
+        </button>
+      )
+    }
   }
 ]

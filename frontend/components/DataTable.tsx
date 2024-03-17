@@ -17,7 +17,7 @@ import {
 } from '@tanstack/react-table'
 import type { Route } from 'next'
 import Link from 'next/link'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 
 interface Item {
   id: number
@@ -80,8 +80,8 @@ export default function DataTable<TData extends Item, TValue>({
     columns,
     getCoreRowModel: getCoreRowModel()
   })
-  const router = useRouter()
   const currentPath = usePathname()
+  console.log(linked)
 
   return (
     <Table className="table-fixed">
@@ -113,19 +113,17 @@ export default function DataTable<TData extends Item, TValue>({
         {table.getRowModel().rows?.length ? (
           table.getRowModel().rows.map((row) => {
             const href = `${currentPath}/${row.original.id}` as Route
-            const handleClick = linked
-              ? () => {
-                  router.push(href)
-                }
-              : (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-                  e.currentTarget.classList.toggle('expanded')
-                }
+            // const handleClick = linked
+            //   ? () => {
+            //       router.push(href)
+            //     }
+            //   : (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+            //       e.currentTarget.classList.toggle('expanded')
+            //     }
             return (
               <TableRow
                 key={row.id}
                 data-state={row.getIsSelected() && 'selected'}
-                className="cursor-pointer"
-                onClick={handleClick}
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id} className="align-top">
