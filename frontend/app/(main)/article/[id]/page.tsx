@@ -3,19 +3,6 @@ import type { Article } from '@/lib/types'
 import { fetcher } from '@/lib/utils'
 import AutoResizeTextarea from './_components/AutoResizeTextArea'
 
-export async function generateStaticParams() {
-  const articles: Article[] = await fetcher
-    .get('article', {
-      searchParams: {
-        take: '200',
-        category: '[]'
-      }
-    })
-    .json()
-  return articles.map((article) => ({
-    id: String(article.id)
-  }))
-}
 export default async function ArticleDetail({
   params
 }: {
