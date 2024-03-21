@@ -30,7 +30,7 @@ export class ArticleService {
     const articles = await this.prisma.article.findMany({
       ...paginator,
       take,
-      where: category ? { category } : undefined,
+      where: category > 0 ? { category } : undefined,
       orderBy: { id: 'desc' }
     })
 

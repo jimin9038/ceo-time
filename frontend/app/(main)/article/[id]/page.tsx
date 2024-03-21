@@ -11,7 +11,14 @@ export default async function ArticleDetail({
   }
 }) {
   const { id } = params
-  const article: Article = await fetcher.get(`article/${id}`).json()
+  const article: Article = await fetcher
+    .get(`article/${id}`, {
+      next: {
+        tags: ['article']
+      },
+      cache: 'no-cache'
+    })
+    .json()
   return (
     <div className="max-w-6xl">
       <div className="flex w-full max-w-6xl flex-col lg:flex-row">

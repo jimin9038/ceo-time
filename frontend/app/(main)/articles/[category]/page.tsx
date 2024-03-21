@@ -16,7 +16,11 @@ export default async function ArticleDetail({
       searchParams: {
         take: '200',
         category
-      }
+      },
+      next: {
+        tags: ['article']
+      },
+      cache: 'no-cache'
     })
     .json()
   return (

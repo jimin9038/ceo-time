@@ -24,7 +24,11 @@ export default async function Home() {
     .get('article', {
       searchParams: {
         main: true
-      }
+      },
+      next: {
+        tags: ['article']
+      },
+      cache: 'no-cache'
     })
     .json()
   const mainArticle: Article = mainArticles.find((article) => {
@@ -45,7 +49,11 @@ export default async function Home() {
     .get('article', {
       searchParams: {
         category: 7
-      }
+      },
+      next: {
+        tags: ['article']
+      },
+      cache: 'no-cache'
     })
     .json()
 
@@ -53,7 +61,11 @@ export default async function Home() {
     .get('article', {
       searchParams: {
         category: 2
-      }
+      },
+      next: {
+        tags: ['article']
+      },
+      cache: 'no-cache'
     })
     .json()
 
@@ -61,7 +73,11 @@ export default async function Home() {
     .get('article', {
       searchParams: {
         category: 10
-      }
+      },
+      next: {
+        tags: ['article']
+      },
+      cache: 'no-cache'
     })
     .json()
 
@@ -69,21 +85,33 @@ export default async function Home() {
     .get('banner/main', {
       searchParams: {
         mainId: BannerMainId.Big1
-      }
+      },
+      next: {
+        tags: ['banner']
+      },
+      cache: 'no-cache'
     })
     .json()
   const Big2Banner: Banner = await fetcher
     .get('banner/main', {
       searchParams: {
         mainId: BannerMainId.Big2
-      }
+      },
+      next: {
+        tags: ['banner']
+      },
+      cache: 'no-cache'
     })
     .json()
   const Big3Banner: Banner = await fetcher
     .get('banner/main', {
       searchParams: {
         mainId: BannerMainId.Big3
-      }
+      },
+      next: {
+        tags: ['banner']
+      },
+      cache: 'no-cache'
     })
     .json()
   // const Big4Banner: Banner = await fetcher
@@ -97,35 +125,55 @@ export default async function Home() {
     .get('banner/main', {
       searchParams: {
         mainId: BannerMainId.Sub1
-      }
+      },
+      next: {
+        tags: ['banner']
+      },
+      cache: 'no-cache'
     })
     .json()
   const Sub2Banner: Banner = await fetcher
     .get('banner/main', {
       searchParams: {
         mainId: BannerMainId.Sub2
-      }
+      },
+      next: {
+        tags: ['banner']
+      },
+      cache: 'no-cache'
     })
     .json()
   const Sub3Banner: Banner = await fetcher
     .get('banner/main', {
       searchParams: {
         mainId: BannerMainId.Sub3
-      }
+      },
+      next: {
+        tags: ['banner']
+      },
+      cache: 'no-cache'
     })
     .json()
   const Sub4Banner: Banner = await fetcher
     .get('banner/main', {
       searchParams: {
         mainId: BannerMainId.Sub4
-      }
+      },
+      next: {
+        tags: ['banner']
+      },
+      cache: 'no-cache'
     })
     .json()
   const Sub5Banner: Banner = await fetcher
     .get('banner/main', {
       searchParams: {
         mainId: BannerMainId.Sub5
-      }
+      },
+      next: {
+        tags: ['banner']
+      },
+      cache: 'no-cache'
     })
     .json()
   // const Sub6Banner: Banner = await fetcher

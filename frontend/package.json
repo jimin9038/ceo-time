@@ -6,7 +6,8 @@
     "dev": "next dev -p 5525",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "forever": "forever start -m 999 -a -o log/out.log -e log/err.log"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.18",

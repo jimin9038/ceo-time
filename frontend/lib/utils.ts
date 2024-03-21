@@ -55,6 +55,9 @@ export const fetcherWithAuth = fetcher.extend({
 })
 
 export const adminFetcher = ky.create({
+  next: {
+    revalidate: 0
+  },
   prefixUrl: adminBaseUrl,
   throwHttpErrors: false,
   retry: 0,

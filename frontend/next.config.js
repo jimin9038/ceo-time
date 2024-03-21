@@ -7,7 +7,6 @@ const nextConfig = {
     typedRoutes: true,
     turbo: true
   },
-  output: 'standalone',
   env: {
     NEXTAUTH_URL: process.env.VERCEL_URL
       ? `https://${process.env.VERCEL_URL}/next-auth/api/auth`
