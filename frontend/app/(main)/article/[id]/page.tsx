@@ -30,9 +30,7 @@ export default async function ArticleDetail({
             alt={article.title}
           />
           <p className="mx-auto mb-20 w-full text-slate-500 lg:w-3/5 lg:text-sm">
-            {
-              "'2024 메이저리그(MLB) 월드투어 서울 시리즈'에 출전하는 로스앤젤레스 다저스 오타니 쇼헤이가 15일 오후 아내 다나카 마미코와 함께 인천국제공항 제1여객터미널을 통해 입국하고 있다. [사진 연합뉴스]"
-            }
+            {article.imageContent}
           </p>
           <AutoResizeTextarea content={article.content}></AutoResizeTextarea>
         </div>

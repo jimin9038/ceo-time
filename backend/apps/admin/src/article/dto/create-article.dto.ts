@@ -15,4 +15,7 @@ export class CreateArticleDto {
 
   @IsString()
   image: string
+
+  @IsString()
+  imageContent: string
 }

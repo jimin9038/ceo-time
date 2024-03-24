@@ -39,13 +39,14 @@ export class ArticleService {
 
   async createArticle(createArticleDto: CreateArticleDto) {
     // user -> author
-    const { title, content, published, image } = createArticleDto
+    const { title, content, published, image, imageContent } = createArticleDto
     const article = await this.prisma.article.create({
       data: {
         title,
         content,
         published,
-        image
+        image,
+        imageContent
       }
     })
 
@@ -54,8 +55,16 @@ export class ArticleService {
 
   async changeArticle(changeArticleDto: ChangeArticleDto) {
     // user -> author
-    const { title, content, published, image, id, mainId, category } =
-      changeArticleDto
+    const {
+      title,
+      content,
+      published,
+      image,
+      id,
+      mainId,
+      category,
+      imageContent
+    } = changeArticleDto
     const article = await this.prisma.article.update({
       where: {
         id
@@ -66,7 +75,8 @@ export class ArticleService {
         published,
         image,
         mainId,
-        category
+        category,
+        imageContent
       }
     })
 

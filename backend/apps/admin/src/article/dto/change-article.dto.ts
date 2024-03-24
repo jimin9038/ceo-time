@@ -31,4 +31,8 @@ export class ChangeArticleDto {
   @IsOptional()
   @IsNumber()
   category: number
+
+  @IsOptional()
+  @IsString()
+  imageContent: string
 }

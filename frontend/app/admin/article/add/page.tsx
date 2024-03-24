@@ -13,6 +13,7 @@ export default function PostArticle() {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [category, setCategory] = useState('')
+  const [imageContent, setImageContent] = useState('')
   const [loading, setLoading] = useState(false)
 
   const imgRef = useRef<HTMLInputElement>(null)
@@ -55,7 +56,8 @@ export default function PostArticle() {
           title,
           content,
           category,
-          image: imageRes.location
+          image: imageRes.location,
+          imageContent
         }
       })
       if (res.ok) router.push('/admin/article')
@@ -86,6 +88,12 @@ export default function PostArticle() {
         className="w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-300 focus:border-indigo-300 focus:outline-none focus:ring focus:ring-indigo-100 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:border-gray-500 dark:focus:ring-gray-900"
         placeholder="Category"
       /> */}
+      <textarea
+        value={imageContent}
+        onChange={(e) => setImageContent(e.target.value)}
+        className="w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-300 focus:border-indigo-300 focus:outline-none focus:ring focus:ring-indigo-100 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:border-gray-500 dark:focus:ring-gray-900"
+        placeholder="Image Content"
+      />
       <label>메인 이미지 선택 </label>
       <input
         type="file"

@@ -38,6 +38,7 @@ model Article {
   category        Int               @default(0)
   image           String            @default("")
   mainId          Int               @default(0)
+  imageContent    String            @default("")
 }
 
 model Banner {
