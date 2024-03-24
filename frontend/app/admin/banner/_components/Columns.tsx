@@ -2,18 +2,24 @@
 
 import { adminFetcherWithAuth } from '@/lib/utils'
 import type { ColumnDef } from '@tanstack/react-table'
+import { toast } from 'sonner'
 
-const handleChange = (
+const handleChange = async (
   e: React.ChangeEvent<HTMLSelectElement>,
   bannerId: number
 ) => {
   e.preventDefault()
-  adminFetcherWithAuth.put('banner', {
+  const res = await adminFetcherWithAuth.put('banner', {
     json: {
       id: bannerId,
       mainId: Number(e.target.value)
     }
   })
+  if (res.ok) {
+    toast.success('배너 변경 완료')
+  } else {
+    toast.error('배너 변경 실패! 다시 시도해주세요')
+  }
 }
 interface Banner {
   id: number

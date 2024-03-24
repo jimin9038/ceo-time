@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 import { useRef } from 'react'
+import { toast } from 'sonner'
 
 export default function PostBanner() {
   const router = useRouter()
@@ -54,7 +55,12 @@ export default function PostBanner() {
           revalidate: 0
         }
       })
-      if (res.ok) router.push('/admin/banner')
+      if (res.ok) {
+        toast.success('배너 업로드 완료')
+        router.push('/admin/banner')
+      } else {
+        toast.error('배너 업로드 실패, 다시 시도해주세요')
+      }
       setLoading(false)
       console.log(res)
     }
