@@ -33,7 +33,9 @@ export default async function Header() {
             <NavLink href="/articles/10" text="VIVID" />
             <NavLink href="/articles/11" text="LIFE" />
           </nav>
-          <div className="whitespace-nowrap">{today.toLocaleDateString()}</div>
+          <div className="whitespace-nowrap">
+            {today.toLocaleDateString('ko-KR')}
+          </div>
         </div>
       </div>
     </header>
