@@ -69,10 +69,34 @@ export default async function Home() {
     })
     .json()
 
+  const thirdSectionArticles2: Article[] = await fetcher
+    .get('article', {
+      searchParams: {
+        category: 1
+      },
+      next: {
+        tags: ['article']
+      },
+      cache: 'no-cache'
+    })
+    .json()
+
   const forthSectionArticles: Article[] = await fetcher
     .get('article', {
       searchParams: {
         category: 10
+      },
+      next: {
+        tags: ['article']
+      },
+      cache: 'no-cache'
+    })
+    .json()
+
+  const forthSectionArticles2: Article[] = await fetcher
+    .get('article', {
+      searchParams: {
+        category: 11
       },
       next: {
         tags: ['article']
@@ -223,8 +247,8 @@ export default async function Home() {
           <MiddleArticle article={thirdSectionArticles[1]}></MiddleArticle>
         </div>
         <div className="h-30 w-full md:w-1/2 lg:pl-6">
-          <MiddleArticle article={thirdSectionArticles[2]}></MiddleArticle>
-          <MiddleArticle article={thirdSectionArticles[3]}></MiddleArticle>
+          <MiddleArticle article={thirdSectionArticles2[0]}></MiddleArticle>
+          <MiddleArticle article={thirdSectionArticles2[1]}></MiddleArticle>
         </div>
       </section>
       <section className="flex w-full max-w-6xl flex-col border-b-2 border-r-gray-500 lg:flex-row">
@@ -233,8 +257,8 @@ export default async function Home() {
           <MiddleArticle article={forthSectionArticles[1]}></MiddleArticle>
         </div>
         <div className="h-30 w-full md:w-1/2 lg:pl-6">
-          <MiddleArticle article={forthSectionArticles[2]}></MiddleArticle>
-          <MiddleArticle article={forthSectionArticles[3]}></MiddleArticle>
+          <MiddleArticle article={forthSectionArticles2[0]}></MiddleArticle>
+          <MiddleArticle article={forthSectionArticles2[1]}></MiddleArticle>
         </div>
       </section>
       <section className="flex w-full max-w-6xl flex-col border-b-2 border-r-gray-500 lg:flex-row">

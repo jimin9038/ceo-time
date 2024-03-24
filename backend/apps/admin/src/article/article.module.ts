@@ -39,7 +39,7 @@ import { ArticleService } from './article.service'
             }
           }),
           limits: {
-            fileSize: 1024 * 1024 * 5, // 5 MB
+            fileSize: 1024 * 1024 * 30, // 30 MB
             files: 1
           },
           fileFilter(req, file, callback) {
