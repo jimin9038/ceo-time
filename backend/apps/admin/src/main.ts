@@ -6,7 +6,7 @@ const bootstrap = async () => {
   const app = await NestFactory.create(AdminModule)
   if (process.env.NODE_ENV !== 'production') {
     app.enableCors({
-      origin: 'http://52.55.75.14:8060',
+      origin: 'https://www.ceotime.news',
       credentials: true,
       methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
       allowedHeaders: ['*'],

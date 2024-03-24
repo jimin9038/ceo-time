@@ -128,8 +128,8 @@ export const columns: ColumnDef<Article>[] = [
     cell: ({ row }) => {
       return (
         <button
-          onClick={() => {
-            adminFetcherWithAuth.delete(`article/${row.original.id}`)
+          onClick={async () => {
+            await adminFetcherWithAuth.delete(`article/${row.original.id}`)
             window.location.reload()
           }}
         >
