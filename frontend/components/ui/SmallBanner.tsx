@@ -9,7 +9,7 @@ export default function SmallBanner({ banner }: { banner: Banner }) {
         <div className="relative mr-3 h-28 w-full flex-shrink-0">
           <Image
             src={banner?.image}
-            className="object-cover"
+            className="object-contain"
             fill={true}
             alt="Banner image"
           ></Image>

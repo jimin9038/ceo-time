@@ -8,7 +8,7 @@ export default function BigBanner({ banner }: { banner: Banner }) {
         <div className="relative h-80 w-full flex-shrink-0">
           <Image
             src={banner?.image}
-            className="object-cover"
+            className="object-contain"
             fill={true}
             alt="Banner image"
           ></Image>
