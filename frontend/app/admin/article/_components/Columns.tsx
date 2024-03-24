@@ -5,18 +5,27 @@ import { adminFetcherWithAuth } from '@/lib/utils'
 import type { ColumnDef } from '@tanstack/react-table'
 import dayjs from 'dayjs'
 import Image from 'next/image'
+import { toast } from 'sonner'
 
 const handleChange = (
   e: React.ChangeEvent<HTMLSelectElement>,
   articleId: number
 ) => {
   e.preventDefault()
-  adminFetcherWithAuth.put('article', {
-    json: {
-      id: articleId,
-      mainId: Number(e.target.value)
-    }
-  })
+  adminFetcherWithAuth
+    .put('article', {
+      json: {
+        id: articleId,
+        mainId: Number(e.target.value)
+      }
+    })
+    .then((res) => {
+      if (res.ok) {
+        toast.success('메인 글 변경 성공')
+      } else {
+        toast.error('메인 글 변경 실패, 다시 시도해주세요')
+      }
+    })
 }
 
 const handleChangeCategory = (
@@ -24,12 +33,20 @@ const handleChangeCategory = (
   articleId: number
 ) => {
   e.preventDefault()
-  adminFetcherWithAuth.put('article', {
-    json: {
-      id: articleId,
-      category: Number(e.target.value)
-    }
-  })
+  adminFetcherWithAuth
+    .put('article', {
+      json: {
+        id: articleId,
+        category: Number(e.target.value)
+      }
+    })
+    .then((res) => {
+      if (res.ok) {
+        toast.success('카테고리 변경 성공')
+      } else {
+        toast.error('카테고리 변경 실패, 다시 시도해주세요')
+      }
+    })
 }
 
 export const columns: ColumnDef<Article>[] = [
@@ -129,7 +146,14 @@ export const columns: ColumnDef<Article>[] = [
       return (
         <button
           onClick={async () => {
-            await adminFetcherWithAuth.delete(`article/${row.original.id}`)
+            const res = await adminFetcherWithAuth.delete(
+              `article/${row.original.id}`
+            )
+            if (res.ok) {
+              toast.success('삭제 성공!')
+            } else {
+              toast.error('삭제 실패, 다시 시도해주세요!')
+            }
             window.location.reload()
           }}
         >

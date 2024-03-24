@@ -60,18 +60,6 @@ export default async function Home() {
   const thirdSectionArticles: Article[] = await fetcher
     .get('article', {
       searchParams: {
-        category: 2
-      },
-      next: {
-        tags: ['article']
-      },
-      cache: 'no-cache'
-    })
-    .json()
-
-  const thirdSectionArticles2: Article[] = await fetcher
-    .get('article', {
-      searchParams: {
         category: 1
       },
       next: {
@@ -247,8 +235,8 @@ export default async function Home() {
           <MiddleArticle article={thirdSectionArticles[1]}></MiddleArticle>
         </div>
         <div className="h-30 w-full md:w-1/2 lg:pl-6">
-          <MiddleArticle article={thirdSectionArticles2[0]}></MiddleArticle>
-          <MiddleArticle article={thirdSectionArticles2[1]}></MiddleArticle>
+          <MiddleArticle article={thirdSectionArticles[2]}></MiddleArticle>
+          <MiddleArticle article={thirdSectionArticles[3]}></MiddleArticle>
         </div>
       </section>
       <section className="flex w-full max-w-6xl flex-col border-b-2 border-r-gray-500 lg:flex-row">
