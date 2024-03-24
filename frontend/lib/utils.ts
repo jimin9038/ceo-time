@@ -13,7 +13,7 @@ export const fetcher = ky.create({
   prefixUrl: baseUrl,
   throwHttpErrors: false,
   retry: 0,
-  timeout: 5000,
+  timeout: 30000,
   hooks: {
     beforeError: [
       (error) => {
@@ -61,7 +61,7 @@ export const adminFetcher = ky.create({
   prefixUrl: adminBaseUrl,
   throwHttpErrors: false,
   retry: 0,
-  timeout: 5000,
+  timeout: 30000,
   hooks: {
     beforeError: [
       (error) => {
