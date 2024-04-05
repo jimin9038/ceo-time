@@ -2,6 +2,7 @@
 
 import { adminFetcherWithAuth } from '@/lib/utils'
 import type { ColumnDef } from '@tanstack/react-table'
+import Image from 'next/image'
 import { toast } from 'sonner'
 
 const handleChange = async (
@@ -69,12 +70,12 @@ export const columns: ColumnDef<Banner>[] = [
     accessorKey: 'image',
     cell: ({ row }) => (
       // eslint-disable-next-line @next/next/no-img-element
-      <img
+      <Image
         src={row.original.image}
         width={200}
         height={200}
         alt="bannerimg"
-      ></img>
+      ></Image>
     )
   }
 ]

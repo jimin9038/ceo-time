@@ -1,7 +1,7 @@
-/* eslint-disable @next/next/no-img-element */
 import type { Article } from '@/lib/types'
 import { fetcher } from '@/lib/utils'
 import dayjs from 'dayjs'
+import Image from 'next/image'
 import AutoResizeTextarea from './_components/AutoResizeTextArea'
 
 export default async function ArticleDetail({
@@ -25,7 +25,7 @@ export default async function ArticleDetail({
       <div className="flex w-full max-w-6xl flex-col lg:flex-row">
         <div className="lg:w-4/5 lg:border-r-2 lg:border-slate-100">
           <h1 className="mb-10 mt-20 text-4xl font-bold">{article.title}</h1>
-          <img
+          <Image
             className="mx-auto w-full lg:w-3/5"
             src={article.image}
             alt={article.title}

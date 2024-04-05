@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import type { Article } from '@/lib/types'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default function ArticleList({ article }: { article: Article }) {
@@ -7,12 +8,12 @@ export default function ArticleList({ article }: { article: Article }) {
     <Link href={`/article/${article?.id ?? '0'}`}>
       <article className="flex w-full py-6">
         <div className="relative mr-4 h-32 w-48 flex-shrink-0">
-          <img
+          <Image
             src={article.image}
-            width={200}
-            height={200}
+            fill={true}
             alt="bannerimg"
-          ></img>
+            className="object-cover"
+          ></Image>
         </div>
         <div className="pb-3">
           <h1 className="h-16 overflow-hidden overflow-ellipsis break-words text-xl font-semibold lg:text-lg">
