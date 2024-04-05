@@ -25,12 +25,16 @@ export default async function ArticleDetail({
       <div className="flex w-full max-w-6xl flex-col lg:flex-row">
         <div className="lg:w-4/5 lg:border-r-2 lg:border-slate-100">
           <h1 className="mb-10 mt-20 text-4xl font-bold">{article.title}</h1>
-          <Image
-            className="mx-auto w-full lg:w-3/5"
-            src={article.image}
-            alt={article.title}
-          />
-          <p className="mx-auto mb-20 w-full text-slate-500 lg:w-3/5 lg:text-sm">
+          <div className="relative mx-auto h-96 w-full lg:w-4/5">
+            <Image
+              src={article.image}
+              alt={article.title}
+              className="object-scale-down"
+              fill={true}
+            />
+          </div>
+
+          <p className="mx-auto mb-20 w-full text-slate-500 lg:w-4/5 lg:text-sm">
             {article.imageContent}
           </p>
           <AutoResizeTextarea content={article.content}></AutoResizeTextarea>
