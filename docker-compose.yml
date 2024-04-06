@@ -1,17 +1,38 @@
 services:
-  api:
-    container_name: ceotime-api
+  app:
+    profiles: ['devcontainer']
+    container_name: ceotime-dev
     build:
-      dockerfile: Dockerfile
       context: .
-      target: builder
+      dockerfile: .devcontainer/Dockerfile
     volumes:
-      - .:/app
+      - .:/workspace:cached
+    depends_on:
+      - database
+    stdin_open: true
+    tty: true
+    env_file: .env
+    environment:
+      DEVCONTAINER: 1
+    network_mode: host
+  
+  nginx:
+    image: nginx
+    ports:
+      - '8000:80'
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+
+  client:
+    container_name: ceotime-client
+    build:
+      dockerfile: backend/Dockerfile
+      context: .
+    restart: always
     env_file:
       - .env
-    command: pnpm run --filter=backend start:dev
-    ports:
-      - 4000:4000
+    network_mode: host
+
   database:
     container_name: ceotime-database
     image: postgres:16-alpine
