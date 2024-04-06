@@ -21,7 +21,7 @@ import {
 } from '@nestjs/common'
 import { FileInterceptor } from '@nestjs/platform-express'
 import { Prisma } from '@prisma/client'
-import { AuthNotNeededIfOpenSpace, AuthenticatedRequest } from '@libs/auth'
+import { AuthenticatedRequest, UseRolesGuard } from '@libs/auth'
 import { ArticleService } from './article.service'
 import { ChangeArticleDto } from './dto/change-article.dto'
 import { CreateArticleDto } from './dto/create-article.dto'
@@ -40,8 +40,8 @@ export class CursorValidationPipe implements PipeTransform {
     throw new BadRequestException('Cursor must be a positive number')
   }
 }
-// @UseRolesGuard('Admin')
-@AuthNotNeededIfOpenSpace()
+
+@UseRolesGuard('Admin')
 @Controller('article')
 export class ArticleController {
   private readonly logger = new Logger(ArticleController.name)
@@ -128,7 +128,7 @@ export class ArticleController {
   }
 }
 
-@AuthNotNeededIfOpenSpace()
+@UseRolesGuard('Admin')
 @Controller('s3')
 export class S3StorageController {
   constructor() {}
