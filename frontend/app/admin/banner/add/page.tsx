@@ -37,9 +37,6 @@ export default function PostBanner() {
       formData.append('file', imgRef.current.files[0])
       const imageRes: ImageRes = await adminFetcherWithAuth
         .post('s3/upload', {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          },
           body: formData
         })
         .json()
@@ -67,7 +64,11 @@ export default function PostBanner() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-4"
+      encType="multipart/form-data"
+    >
       <label>메인 이미지 선택 </label>
       <input
         type="file"

@@ -42,9 +42,6 @@ export default function PostArticle() {
       formData.append('file', imgRef.current.files[0])
       const imageRes: ImageRes = await adminFetcherWithAuth
         .post('s3/upload', {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          },
           body: formData
         })
         .json()
@@ -73,7 +70,11 @@ export default function PostArticle() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-4"
+      encType="multipart/form-data"
+    >
       <input
         type="text"
         value={title}
