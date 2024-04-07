@@ -43,7 +43,7 @@ export default function PostArticle() {
       const imageRes: ImageRes = await adminFetcherWithAuth
         .post('s3/upload', {
           headers: {
-            'Contest-Type': 'multipart/form-data'
+            'Content-Type': 'multipart/form-data'
           },
           body: formData
         })
