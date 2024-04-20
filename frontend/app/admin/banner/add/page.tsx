@@ -14,6 +14,7 @@ export default function PostBanner() {
 
   const imgRef = useRef<HTMLInputElement>(null)
   const [imgUrl, setImgUrl] = useState<string>('')
+  const [link, setLink] = useState('')
 
   const imgReset = () => {
     if (imgRef.current) {
@@ -46,7 +47,8 @@ export default function PostBanner() {
       console.log(imageRes)
       const res = await adminFetcherWithAuth.post('banner', {
         json: {
-          image: imageRes.location
+          image: imageRes.location,
+          link
         },
         next: {
           revalidate: 0
@@ -88,6 +90,13 @@ export default function PostBanner() {
       <Button type="button" onClick={imgReset}>
         삭제하기
       </Button>
+      <input
+        type="text"
+        value={link}
+        onChange={(e) => setLink(e.target.value)}
+        className="w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-300 focus:border-indigo-300 focus:outline-none focus:ring focus:ring-indigo-100 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:border-gray-500 dark:focus:ring-gray-900"
+        placeholder="Link"
+      />
       {imgUrl && (
         <>
           <div>

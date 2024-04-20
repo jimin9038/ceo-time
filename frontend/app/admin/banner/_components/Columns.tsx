@@ -84,12 +84,7 @@ export const columns: ColumnDef<Banner>[] = [
     accessorKey: 'link',
     cell: ({ row }) => (
       // eslint-disable-next-line @next/next/no-img-element
-      <Image
-        src={row.original.link}
-        width={200}
-        height={200}
-        alt="bannerimg"
-      ></Image>
+      <a href={row.original.link}>{row.original.link ?? 'No Link'}</a>
     )
   }
 ]
