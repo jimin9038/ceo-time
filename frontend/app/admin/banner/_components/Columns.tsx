@@ -26,6 +26,7 @@ interface Banner {
   id: number
   image: string
   mainId: number
+  link: string
 }
 
 export const columns: ColumnDef<Banner>[] = [
@@ -72,6 +73,19 @@ export const columns: ColumnDef<Banner>[] = [
       // eslint-disable-next-line @next/next/no-img-element
       <Image
         src={row.original.image}
+        width={200}
+        height={200}
+        alt="bannerimg"
+      ></Image>
+    )
+  },
+  {
+    header: '링크',
+    accessorKey: 'link',
+    cell: ({ row }) => (
+      // eslint-disable-next-line @next/next/no-img-element
+      <Image
+        src={row.original.link}
         width={200}
         height={200}
         alt="bannerimg"
