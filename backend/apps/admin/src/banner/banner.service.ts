@@ -36,10 +36,11 @@ export class BannerService {
   }
 
   async createBanner(createBannerDto: CreateBannerDto) {
-    const { image } = createBannerDto
+    const { image, link } = createBannerDto
     const banner = await this.prisma.banner.create({
       data: {
-        image
+        image,
+        link
       }
     })
 
@@ -47,14 +48,15 @@ export class BannerService {
   }
 
   async changeBanner(changeBannerDto: ChangeBannerDto) {
-    const { image, id, mainId } = changeBannerDto
+    const { image, id, mainId, link } = changeBannerDto
     const banner = await this.prisma.banner.update({
       where: {
         id
       },
       data: {
         image,
-        mainId
+        mainId,
+        link
       }
     })
 
