@@ -11,4 +11,8 @@ export class ChangeBannerDto {
   @IsOptional()
   @IsNumber()
   mainId: number
+
+  @IsOptional()
+  @IsString()
+  link: string
 }

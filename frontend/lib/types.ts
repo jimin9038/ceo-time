@@ -17,4 +17,5 @@ export interface Banner {
   id: number
   image: string
   mainId: number
+  link: string
 }
