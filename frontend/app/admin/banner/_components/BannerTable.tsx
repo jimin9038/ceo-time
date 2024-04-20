@@ -39,13 +39,11 @@ export default function BannerTable() {
       columns={columns}
       headerStyle={{
         id: 'w-1/8',
-        title: 'text-left w-2/8 md:w-2/8',
-        author: 'w-1/8',
-        published: 'w-1/8',
         createTime: 'w-1/8',
-        image: 'w-1/8',
+        image: 'w-1/4',
         mainId: 'w-1/8',
-        link: 'w-1/8'
+        link: 'w-1/4',
+        delete: 'w-1/8'
       }}
     />
   )

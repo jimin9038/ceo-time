@@ -86,5 +86,28 @@ export const columns: ColumnDef<Banner>[] = [
       // eslint-disable-next-line @next/next/no-img-element
       <a href={row.original.link}>{row.original.link ?? 'No Link'}</a>
     )
+  },
+  {
+    header: '삭제',
+    accessorKey: 'delete',
+    cell: ({ row }) => {
+      return (
+        <button
+          onClick={async () => {
+            const res = await adminFetcherWithAuth.delete(
+              `banner/${row.original.id}`
+            )
+            if (res.ok) {
+              toast.success('삭제 성공!')
+            } else {
+              toast.error('삭제 실패, 다시 시도해주세요!')
+            }
+            window.location.reload()
+          }}
+        >
+          삭제
+        </button>
+      )
+    }
   }
 ]
