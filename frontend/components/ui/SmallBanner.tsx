@@ -1,4 +1,4 @@
-'use server'
+'use client'
 
 // import { baseUrl } from '@/lib/constants'
 import type { Banner } from '@/lib/types'
