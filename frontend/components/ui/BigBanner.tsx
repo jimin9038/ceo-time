@@ -1,3 +1,5 @@
+'use server'
+
 import type { Banner } from '@/lib/types'
 import Image from 'next/image'
 
