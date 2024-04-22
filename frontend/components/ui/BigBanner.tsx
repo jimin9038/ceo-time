@@ -4,7 +4,7 @@ import Image from 'next/image'
 export default function BigBanner({ banner }: { banner: Banner }) {
   return (
     <article className="relative w-full py-6">
-      <a href={banner?.link || ''} className="relative flex">
+      <a href={banner?.link} className="relative flex">
         <div className="relative h-80 w-full flex-shrink-0">
           <Image
             src={banner?.image}
