@@ -4,7 +4,6 @@ const nextConfig = {
     ignoreDuringBuilds: true
   },
   experimental: {
-    typedRoutes: true,
     turbo: true
   },
   env: {
