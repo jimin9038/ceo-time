@@ -44,21 +44,5 @@ services:
       - .env
     network_mode: host
 
-  database:
-    container_name: ceotime-database
-    image: postgres:16-alpine
-    ports:
-      - 5433:5432
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 1234
-      POSTGRES_DB: ceotime
-    volumes:
-      - ceotime-database:/var/lib/postgresql/data
-  cache:
-    container_name: ceotime-cache
-    image: redis:7-alpine
-    ports:
-      - 6380:6379
 volumes:
   ceotime-database:
