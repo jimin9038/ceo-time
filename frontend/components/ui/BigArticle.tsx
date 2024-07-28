@@ -15,11 +15,11 @@ export default function BigArticle({ article }: { article: Article }) {
           ></Image>
         </div>
         <div className="py-4">
-          <h1 className="break-words text-3xl font-semibold lg:overflow-hidden lg:overflow-ellipsis lg:whitespace-nowrap">
+          <h1 className="break-words text-2xl font-semibold lg:overflow-hidden lg:overflow-ellipsis lg:whitespace-nowrap">
             {article?.title}
           </h1>
         </div>
-        <div className="line-clamp-4 w-full max-w-full overflow-hidden overflow-ellipsis">
+        <div className="line-clamp-4 w-full max-w-full overflow-hidden overflow-ellipsis font-light lg:text-sm">
           <h1> {article?.content} </h1>
         </div>
       </article>

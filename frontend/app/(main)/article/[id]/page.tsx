@@ -21,10 +21,10 @@ export default async function ArticleDetail({
     })
     .json()
   return (
-    <div className="max-w-6xl">
-      <div className="flex w-full max-w-6xl flex-col lg:flex-row">
+    <div className="w-full max-w-6xl">
+      <div className="flex w-full flex-col lg:flex-row">
         <div className="lg:w-4/5 lg:border-r-2 lg:border-slate-100">
-          <h1 className="mb-10 mt-20 text-4xl font-bold">{article.title}</h1>
+          <h1 className="mb-10 mt-20 w-11/12 text-3xl">{article.title}</h1>
           <div className="relative mx-auto h-96 w-full lg:w-4/5">
             <Image
               src={article.image}
@@ -43,8 +43,8 @@ export default async function ArticleDetail({
           </p>
         </div>
         <div className="my-10 lg:m-5 lg:w-1/5">
-          <p className="mb-4 text-xl font-bold">인기 있는 콘텐츠</p>
-          <p>준비 중입니다.</p>
+          <p className="font-base mb-4 text-xl">인기 있는 콘텐츠</p>
+          <p className="font-light">준비 중입니다.</p>
         </div>
       </div>
     </div>

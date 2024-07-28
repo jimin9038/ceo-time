@@ -7,12 +7,12 @@ export default function MiddleArticle({ article }: { article: Article }) {
     <Link href={`/article/${article?.id ?? '0'}`}>
       <article className="relative w-full py-6">
         <div className="pb-3">
-          <h1 className="overflow-hidden overflow-ellipsis whitespace-nowrap break-words text-2xl font-semibold lg:text-lg">
+          <h1 className="overflow-hidden overflow-ellipsis whitespace-nowrap break-words text-base font-semibold">
             {article?.title}
           </h1>
         </div>
         <div className="relative flex">
-          <div className="overflow-hidden overflow-ellipsis lg:text-sm ">
+          <div className="overflow-hidden overflow-ellipsis lg:text-sm lg:font-light">
             <h1 className="line-clamp-5"> {article?.content} </h1>
           </div>
           <div className="relative ml-3 h-28 w-36 flex-shrink-0">

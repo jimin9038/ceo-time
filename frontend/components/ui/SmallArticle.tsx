@@ -7,7 +7,7 @@ export default function SmallArticle({ article }: { article: Article }) {
     <Link href={`/article/${article?.id ?? '0'}`}>
       <article className="relative w-full py-6">
         <div className="pb-3">
-          <h1 className="h-14 overflow-hidden overflow-ellipsis break-words text-xl font-semibold lg:text-lg">
+          <h1 className="h-14 overflow-hidden overflow-ellipsis break-words text-base font-semibold">
             {article?.title}
           </h1>
         </div>
@@ -20,7 +20,7 @@ export default function SmallArticle({ article }: { article: Article }) {
               alt="Article image"
             ></Image>
           </div>
-          <div className="prose flex lg:max-h-16 lg:overflow-hidden lg:overflow-ellipsis lg:text-sm">
+          <div className="prose flex lg:max-h-16 lg:overflow-hidden lg:overflow-ellipsis lg:text-sm lg:font-light">
             <h1> {article?.content} </h1>
           </div>
         </div>

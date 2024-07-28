@@ -27,7 +27,7 @@ function AutoResizeTextarea({ content }: { content: string }) {
   return (
     <textarea
       ref={textAreaRef}
-      className="mx-auto w-11/12 resize-none border-none caret-transparent outline-none"
+      className="mx-auto w-11/12 resize-none border-none text-base font-light caret-transparent outline-none"
     >
       {content}
     </textarea>
