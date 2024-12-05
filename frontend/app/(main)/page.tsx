@@ -20,6 +20,7 @@ enum BannerMainId {
   Sub6
 }
 export default async function Home() {
+  const today = new Date()
   const mainArticles: Article[] = await fetcher
     .get('article', {
       searchParams: {
@@ -202,6 +203,9 @@ export default async function Home() {
           <BigArticle article={mainArticle}></BigArticle>
         </div>
         <div className="h-30 w-full overflow-hidden lg:ml-6 lg:w-1/2">
+          <div className="w-full whitespace-nowrap text-right">
+            {today.toLocaleDateString('ko-KR')}
+          </div>
           {middleArticles}
         </div>
       </section>

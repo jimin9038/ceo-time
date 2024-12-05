@@ -117,6 +117,7 @@ export const columns: ColumnDef<Article>[] = [
           }
         >
           <option value={0}>No Category</option>
+          <option value={12}>CEO&Leadership</option>
           <option value={1}>CEO</option>
           <option value={2}>C-LEVEL</option>
           <option value={3}>VIEW</option>
