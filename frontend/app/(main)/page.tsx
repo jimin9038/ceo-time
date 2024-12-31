@@ -197,7 +197,7 @@ export default async function Home() {
   //   })
   //   .json()
   return (
-    <div>
+    <>
       <section className="flex w-full max-w-6xl flex-col border-b-2 border-r-gray-500 lg:flex-row">
         <div className="h-30 mt-6 w-full border-r-2 border-r-gray-100 lg:w-1/2 lg:pr-6">
           <BigArticle article={mainArticle}></BigArticle>
@@ -265,6 +265,6 @@ export default async function Home() {
           <SmallBanner banner={Sub5Banner}></SmallBanner>
         </div>
       </section>
-    </div>
+    </>
   )
 }
