@@ -16,7 +16,7 @@ export default function ArticleTable() {
     const res: Article[] = await adminFetcherWithAuth
       .get('article', {
         searchParams: {
-          take: '200',
+          take: '2000',
           category: '0'
         }
       })
