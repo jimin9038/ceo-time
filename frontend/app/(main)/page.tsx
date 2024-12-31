@@ -210,35 +210,35 @@ export default async function Home() {
         </div>
       </section>
       <section className="flex w-full max-w-6xl flex-col border-b-2 border-r-gray-500 lg:flex-row">
-        <div className="h-30 w-full border-r-2 border-r-gray-100 md:w-1/2 lg:w-1/3 lg:pr-6">
+        <div className="h-30 w-full border-r-2 border-r-gray-100 lg:w-1/3 lg:pr-6">
           <SmallArticle article={secondSectionArticles[0]}></SmallArticle>
           <SmallArticle article={secondSectionArticles[1]}></SmallArticle>
         </div>
-        <div className="h-30 w-full border-r-2 border-r-gray-100 md:w-1/2 lg:w-1/3 lg:px-6">
+        <div className="h-30 w-full border-r-2 border-r-gray-100 lg:w-1/3 lg:px-6">
           <SmallArticle article={secondSectionArticles[2]}></SmallArticle>
           <SmallArticle article={secondSectionArticles[3]}></SmallArticle>
         </div>
-        <div className="h-30 w-full md:w-1/2 lg:w-1/3 lg:pl-6">
+        <div className="h-30 w-full lg:w-1/3 lg:pl-6">
           <BigBanner banner={Big1Banner}></BigBanner>
         </div>
       </section>
-      <section className="flex w-full max-w-6xl flex-col border-b-2 border-r-gray-500 lg:flex-row">
-        <div className="h-30 w-full md:w-1/2 lg:w-1/3 lg:pr-6 ">
+      <section className="flex w-full max-w-6xl flex-row border-b-2 border-r-gray-500">
+        <div className="h-30 w-full lg:w-1/3 lg:pr-6 ">
           <SmallBanner banner={Sub1Banner}></SmallBanner>
         </div>
-        <div className="h-30 w-full md:w-1/2 lg:w-1/3 lg:px-6">
+        <div className="h-30 w-full lg:w-1/3 lg:px-6">
           <SmallBanner banner={Sub2Banner}></SmallBanner>
         </div>
-        <div className="h-30 w-full md:w-1/2 lg:w-1/3 lg:pl-6">
+        <div className="h-30 w-full lg:w-1/3 lg:pl-6">
           <SmallBanner banner={Sub3Banner}></SmallBanner>
         </div>
       </section>
-      <section className="flex w-full max-w-6xl flex-col border-b-2 border-r-gray-500 lg:flex-row">
-        <div className="h-30 w-full md:w-1/2 lg:pr-6">
+      <section className="flex w-full max-w-6xl flex-row border-b-2 border-r-gray-500">
+        <div className="h-30 w-full pr-6 md:w-1/2">
           <MiddleArticle article={thirdSectionArticles[0]}></MiddleArticle>
           <MiddleArticle article={thirdSectionArticles[1]}></MiddleArticle>
         </div>
-        <div className="h-30 w-full md:w-1/2 lg:pl-6">
+        <div className="h-30 w-full pl-6 md:w-1/2">
           <MiddleArticle article={thirdSectionArticles[2]}></MiddleArticle>
           <MiddleArticle article={thirdSectionArticles[3]}></MiddleArticle>
         </div>

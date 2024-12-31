@@ -21,7 +21,7 @@ export default function SmallArticle({ article }: { article: Article }) {
             ></Image>
           </div>
           <div className="prose flex lg:max-h-16 lg:overflow-hidden lg:overflow-ellipsis lg:text-sm lg:font-light">
-            <h1> {article?.content} </h1>
+            <h1 className="line-clamp-5"> {article?.content} </h1>
           </div>
         </div>
       </article>
