@@ -62,6 +62,8 @@ export const columns: ColumnDef<Banner>[] = [
           <option value={8}>Sub 4</option>
           <option value={9}>Sub 5</option>
           <option value={10}>Sub 6</option>
+          <option value={11}>Sub 7</option>
+          <option value={12}>Sub 8</option>
         </select>
       )
     }
