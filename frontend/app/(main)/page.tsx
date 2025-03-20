@@ -191,18 +191,26 @@ export default async function Home() {
     })
     .json()
   const Sub6Banner: Banner = await fetcher
-    .get('banner', {
+    .get('banner/main', {
       searchParams: {
         mainId: BannerMainId.Sub6
-      }
+      },
+      next: {
+        tags: ['banner']
+      },
+      cache: 'no-cache'
     })
     .json()
 
   const Sub7Banner: Banner = await fetcher
-    .get('banner', {
+    .get('banner/main', {
       searchParams: {
         mainId: BannerMainId.Sub7
-      }
+      },
+      next: {
+        tags: ['banner']
+      },
+      cache: 'no-cache'
     })
     .json()
   return (
