@@ -235,7 +235,7 @@ export default async function Home() {
           <SmallArticle article={secondSectionArticles[2]}></SmallArticle>
           <SmallArticle article={secondSectionArticles[3]}></SmallArticle>
         </div>
-        <div className="h-30 flex w-full flex-col justify-between lg:w-1/3 lg:pl-6">
+        <div className="h-30 flex w-full flex-col justify-center px-10 lg:w-1/3 lg:pl-6">
           {/* <BigBanner banner={Big1Banner}></BigBanner> */}
           <SmallBanner banner={Sub6Banner}></SmallBanner>
           <SmallBanner banner={Sub7Banner}></SmallBanner>
