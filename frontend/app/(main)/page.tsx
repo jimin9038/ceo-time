@@ -242,13 +242,13 @@ export default async function Home() {
         </div>
       </section>
       <section className="flex w-full max-w-6xl flex-row border-b-2 border-r-gray-500">
-        <div className="h-30 w-full lg:w-1/3 lg:pr-6 ">
+        <div className="h-30 w-full lg:w-[30%] lg:pr-6 ">
           <SmallBanner banner={Sub1Banner}></SmallBanner>
         </div>
-        <div className="h-30 w-full lg:w-1/3 lg:px-6">
+        <div className="h-30 w-full lg:w-[40%] lg:px-0">
           <SmallBanner banner={Sub2Banner}></SmallBanner>
         </div>
-        <div className="h-30 w-full lg:w-1/3 lg:pl-6">
+        <div className="h-30 w-full lg:w-[30%] lg:pl-6">
           <SmallBanner banner={Sub3Banner}></SmallBanner>
         </div>
       </section>
