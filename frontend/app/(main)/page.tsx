@@ -95,17 +95,17 @@ export default async function Home() {
     })
     .json()
 
-  // const Big1Banner: Banner = await fetcher
-  //   .get('banner/main', {
-  //     searchParams: {
-  //       mainId: BannerMainId.Big1
-  //     },
-  //     next: {
-  //       tags: ['banner']
-  //     },
-  //     cache: 'no-cache'
-  //   })
-  //   .json()
+  const Big1Banner: Banner = await fetcher
+    .get('banner/main', {
+      searchParams: {
+        mainId: BannerMainId.Big1
+      },
+      next: {
+        tags: ['banner']
+      },
+      cache: 'no-cache'
+    })
+    .json()
   const Big2Banner: Banner = await fetcher
     .get('banner/main', {
       searchParams: {
@@ -190,29 +190,29 @@ export default async function Home() {
       cache: 'no-cache'
     })
     .json()
-  const Sub6Banner: Banner = await fetcher
-    .get('banner/main', {
-      searchParams: {
-        mainId: BannerMainId.Sub6
-      },
-      next: {
-        tags: ['banner']
-      },
-      cache: 'no-cache'
-    })
-    .json()
+  // const Sub6Banner: Banner = await fetcher
+  //   .get('banner/main', {
+  //     searchParams: {
+  //       mainId: BannerMainId.Sub6
+  //     },
+  //     next: {
+  //       tags: ['banner']
+  //     },
+  //     cache: 'no-cache'
+  //   })
+  //   .json()
 
-  const Sub7Banner: Banner = await fetcher
-    .get('banner/main', {
-      searchParams: {
-        mainId: BannerMainId.Sub7
-      },
-      next: {
-        tags: ['banner']
-      },
-      cache: 'no-cache'
-    })
-    .json()
+  // const Sub7Banner: Banner = await fetcher
+  //   .get('banner/main', {
+  //     searchParams: {
+  //       mainId: BannerMainId.Sub7
+  //     },
+  //     next: {
+  //       tags: ['banner']
+  //     },
+  //     cache: 'no-cache'
+  //   })
+  //   .json()
   return (
     <>
       <section className="flex w-full max-w-6xl flex-col border-b-2 border-r-gray-500 lg:flex-row">
@@ -236,9 +236,9 @@ export default async function Home() {
           <SmallArticle article={secondSectionArticles[3]}></SmallArticle>
         </div>
         <div className="h-30 flex w-full flex-col justify-center px-10 lg:w-1/3 lg:pl-6">
-          {/* <BigBanner banner={Big1Banner}></BigBanner> */}
-          <SmallBanner banner={Sub6Banner}></SmallBanner>
-          <SmallBanner banner={Sub7Banner}></SmallBanner>
+          <BigBanner banner={Big1Banner}></BigBanner>
+          {/* <SmallBanner banner={Sub6Banner}></SmallBanner>
+          <SmallBanner banner={Sub7Banner}></SmallBanner> */}
         </div>
       </section>
       <section className="flex w-full max-w-6xl flex-row border-b-2 border-r-gray-500">
