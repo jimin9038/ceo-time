@@ -16,7 +16,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'ceotimebucket.s3.ap-northeast-2.amazonaws.com'
+        hostname: 'ceotimebucket-migrated.s3.ap-northeast-2.amazonaws.com'
       }
     ]
   }
