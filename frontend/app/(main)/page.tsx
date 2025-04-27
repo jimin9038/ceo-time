@@ -216,10 +216,10 @@ export default async function Home() {
   return (
     <>
       <section className="flex w-full max-w-6xl flex-col border-b-2 border-r-gray-500 lg:flex-row">
-        <div className="h-30 mt-6 w-full border-r-2 border-r-gray-100 lg:w-1/2 lg:pr-6">
+        <div className="mt-6 w-full border-r-2 border-r-gray-100 lg:w-1/2 lg:pr-6">
           <BigArticle article={mainArticle}></BigArticle>
         </div>
-        <div className="h-30 w-full overflow-hidden lg:ml-6 lg:w-1/2">
+        <div className="w-full overflow-hidden lg:ml-6 lg:w-1/2">
           <div className="w-full whitespace-nowrap text-right">
             {today.toLocaleDateString('ko-KR')}
           </div>
@@ -227,59 +227,59 @@ export default async function Home() {
         </div>
       </section>
       <section className="flex w-full max-w-6xl flex-col border-b-2 border-r-gray-500 lg:flex-row">
-        <div className="h-30 w-full border-r-2 border-r-gray-100 lg:w-1/3 lg:pr-6">
+        <div className="w-full border-r-2 border-r-gray-100 lg:w-1/3 lg:pr-6">
           <SmallArticle article={secondSectionArticles[0]}></SmallArticle>
           <SmallArticle article={secondSectionArticles[1]}></SmallArticle>
         </div>
-        <div className="h-30 w-full border-r-2 border-r-gray-100 lg:w-1/3 lg:px-6">
+        <div className="w-full border-r-2 border-r-gray-100 lg:w-1/3 lg:px-6">
           <SmallArticle article={secondSectionArticles[2]}></SmallArticle>
           <SmallArticle article={secondSectionArticles[3]}></SmallArticle>
         </div>
-        <div className="h-30 flex w-full flex-col justify-center px-10 lg:w-1/3 lg:pl-6">
+        <div className="flex w-full flex-col justify-center px-10 lg:w-1/3 lg:pl-6">
           <BigBanner banner={Big1Banner}></BigBanner>
           {/* <SmallBanner banner={Sub6Banner}></SmallBanner>
           <SmallBanner banner={Sub7Banner}></SmallBanner> */}
         </div>
       </section>
       <section className="flex w-full max-w-6xl flex-row border-b-2 border-r-gray-500">
-        <div className="h-30 w-full lg:w-[30%] lg:pr-6 ">
+        <div className="flex w-full lg:w-[30%] lg:pr-6">
           <SmallBanner banner={Sub1Banner}></SmallBanner>
         </div>
-        <div className="h-30 w-full lg:w-[40%] lg:px-0">
-          <SmallBanner banner={Sub2Banner}></SmallBanner>
+        <div className="flex w-full lg:w-[40%] lg:px-0">
+          <SmallBanner banner={Sub2Banner} className={'h-36'}></SmallBanner>
         </div>
-        <div className="h-30 w-full lg:w-[30%] lg:pl-6">
+        <div className="flex w-full lg:w-[30%] lg:pl-6">
           <SmallBanner banner={Sub3Banner}></SmallBanner>
         </div>
       </section>
       <section className="flex w-full max-w-6xl flex-row border-b-2 border-r-gray-500">
-        <div className="h-30 w-full pr-6 md:w-1/2">
+        <div className="w-full pr-6 md:w-1/2">
           <MiddleArticle article={thirdSectionArticles[0]}></MiddleArticle>
           <MiddleArticle article={thirdSectionArticles[1]}></MiddleArticle>
         </div>
-        <div className="h-30 w-full pl-6 md:w-1/2">
+        <div className="w-full pl-6 md:w-1/2">
           <MiddleArticle article={thirdSectionArticles[2]}></MiddleArticle>
           <MiddleArticle article={thirdSectionArticles[3]}></MiddleArticle>
         </div>
       </section>
       <section className="flex w-full max-w-6xl flex-col border-b-2 border-r-gray-500 lg:flex-row">
-        <div className="h-30 w-full md:w-1/2 lg:pr-6">
+        <div className="w-full md:w-1/2 lg:pr-6">
           <MiddleArticle article={forthSectionArticles[0]}></MiddleArticle>
           <MiddleArticle article={forthSectionArticles[1]}></MiddleArticle>
         </div>
-        <div className="h-30 w-full md:w-1/2 lg:pl-6">
+        <div className="w-full md:w-1/2 lg:pl-6">
           <MiddleArticle article={forthSectionArticles2[0]}></MiddleArticle>
           <MiddleArticle article={forthSectionArticles2[1]}></MiddleArticle>
         </div>
       </section>
       <section className="flex w-full max-w-6xl flex-col border-b-2 border-r-gray-500 lg:flex-row">
-        <div className="h-30 w-full md:w-1/2 lg:w-1/3 lg:pr-6 ">
+        <div className="w-full md:w-1/2 lg:w-1/3 lg:pr-6 ">
           <BigBanner banner={Big2Banner}></BigBanner>
         </div>
-        <div className="h-30 w-full md:w-1/2 lg:w-1/3 lg:px-6">
+        <div className="w-full md:w-1/2 lg:w-1/3 lg:px-6">
           <BigBanner banner={Big3Banner}></BigBanner>
         </div>
-        <div className="h-30 w-full md:w-1/2 lg:w-1/3 lg:pl-6">
+        <div className="w-full md:w-1/2 lg:w-1/3 lg:pl-6">
           <SmallBanner banner={Sub4Banner}></SmallBanner>
           <SmallBanner banner={Sub5Banner}></SmallBanner>
         </div>
