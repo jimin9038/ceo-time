@@ -227,15 +227,15 @@ export default async function Home() {
         </div>
       </section>
       <section className="flex w-full max-w-6xl flex-col border-b-2 border-r-gray-500 lg:flex-row">
-        <div className="w-full border-r-2 border-r-gray-100 lg:w-1/3 lg:pr-6">
+        <div className="w-full border-r-2 border-r-gray-100 lg:w-[30%] lg:pr-6">
           <SmallArticle article={secondSectionArticles[0]}></SmallArticle>
           <SmallArticle article={secondSectionArticles[1]}></SmallArticle>
         </div>
-        <div className="w-full border-r-2 border-r-gray-100 lg:w-1/3 lg:px-6">
+        <div className="w-full border-r-2 border-r-gray-100 lg:w-[30%] lg:px-6">
           <SmallArticle article={secondSectionArticles[2]}></SmallArticle>
           <SmallArticle article={secondSectionArticles[3]}></SmallArticle>
         </div>
-        <div className="flex w-full flex-col justify-center px-10 lg:w-1/3 lg:pl-6">
+        <div className="flex w-full flex-col justify-center lg:w-[40%] lg:pl-6">
           <BigBanner banner={Big1Banner}></BigBanner>
           {/* <SmallBanner banner={Sub6Banner}></SmallBanner>
           <SmallBanner banner={Sub7Banner}></SmallBanner> */}
@@ -245,11 +245,11 @@ export default async function Home() {
         <div className="flex w-full lg:w-[30%] lg:pr-6">
           <SmallBanner banner={Sub1Banner}></SmallBanner>
         </div>
-        <div className="flex w-full lg:w-[40%] lg:px-0">
-          <SmallBanner banner={Sub2Banner} className={'h-36'}></SmallBanner>
+        <div className="flex w-full lg:w-[30%] lg:px-0">
+          <SmallBanner banner={Sub2Banner}></SmallBanner>
         </div>
-        <div className="flex w-full lg:w-[30%] lg:pl-6">
-          <SmallBanner banner={Sub3Banner}></SmallBanner>
+        <div className="flex w-full lg:w-[40%] lg:pl-6">
+          <SmallBanner banner={Sub3Banner} className={'h-36'}></SmallBanner>
         </div>
       </section>
       <section className="flex w-full max-w-6xl flex-row border-b-2 border-r-gray-500">
